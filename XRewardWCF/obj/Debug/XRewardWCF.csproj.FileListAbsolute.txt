@@ -1,0 +1,10 @@
+C:\adaware\xReward\XReward\_build\Debug\XRewardWCF.dll
+C:\adaware\xReward\XReward\_build\Debug\XRewardWCF.pdb
+C:\adaware\xReward\XReward\XRewardWCF\obj\Debug\XRewardWCF.csprojResolveAssemblyReference.cache
+C:\adaware\xReward\XReward\XRewardWCF\obj\Debug\XRewardWCF.dll
+C:\adaware\xReward\XReward\XRewardWCF\obj\Debug\XRewardWCF.pdb
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\_build\Debug\XRewardWCF.dll
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\_build\Debug\XRewardWCF.pdb
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWCF\obj\Debug\XRewardWCF.csprojResolveAssemblyReference.cache
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWCF\obj\Debug\XRewardWCF.dll
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWCF\obj\Debug\XRewardWCF.pdb

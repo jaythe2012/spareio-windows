@@ -1,0 +1,9 @@
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\_build\Debug\SpareioWCF.dll
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\_build\Debug\SpareioWCF.pdb
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWCF\obj\Debug\Spareio.WCF.csprojResolveAssemblyReference.cache
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWCF\obj\Debug\SpareioWCF.dll
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWCF\obj\Debug\SpareioWCF.pdb
+C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\_build\Debug\SpareioWCF.dll
+C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\_build\Debug\SpareioWCF.pdb
+C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\XRewardWCF\obj\Debug\SpareioWCF.dll
+C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\XRewardWCF\obj\Debug\SpareioWCF.pdb

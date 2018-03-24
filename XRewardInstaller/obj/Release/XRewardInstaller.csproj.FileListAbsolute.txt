@@ -1,0 +1,13 @@
+C:\adaware\xReward\XReward\_build\Release\XRewardInstaller.exe
+C:\adaware\xReward\XReward\_build\Release\XRewardInstaller.pdb
+C:\adaware\xReward\XReward\XRewardInstaller\obj\Release\XRewardInstaller.csprojResolveAssemblyReference.cache
+C:\adaware\xReward\XReward\XRewardInstaller\obj\Release\MainWindow.g.cs
+C:\adaware\xReward\XReward\XRewardInstaller\obj\Release\App.g.cs
+C:\adaware\xReward\XReward\XRewardInstaller\obj\Release\XRewardInstaller_MarkupCompile.cache
+C:\adaware\xReward\XReward\XRewardInstaller\obj\Release\XRewardInstaller_MarkupCompile.lref
+C:\adaware\xReward\XReward\XRewardInstaller\obj\Release\MainWindow.baml
+C:\adaware\xReward\XReward\XRewardInstaller\obj\Release\XRewardInstaller.g.resources
+C:\adaware\xReward\XReward\XRewardInstaller\obj\Release\XRewardInstaller.Properties.Resources.resources
+C:\adaware\xReward\XReward\XRewardInstaller\obj\Release\XRewardInstaller.csproj.GenerateResource.Cache
+C:\adaware\xReward\XReward\XRewardInstaller\obj\Release\XRewardInstaller.exe
+C:\adaware\xReward\XReward\XRewardInstaller\obj\Release\XRewardInstaller.pdb

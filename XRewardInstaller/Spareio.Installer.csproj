@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CD20964C-D709-4EE4-85AD-B6309F14894E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Spareio.Installer</RootNamespace>
+    <AssemblyName>SpareioInstaller</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\_build\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\_build\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>Lib\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppCore\ReportInstallationResultStep.cs" />
+    <Compile Include="AppCore\CreatePartnerInfoStep.cs" />
+    <Compile Include="AppCore\DownloadStep.cs" />
+    <Compile Include="AppCore\ExecuteCommandStep.cs" />
+    <Compile Include="AppCore\ExecuteInstallService.cs" />
+    <Compile Include="AppCore\GenerateInstallMachineIds.cs" />
+    <Compile Include="AppCore\IInstallationStep.cs" />
+    <Compile Include="AppCore\InstallService.cs" />
+    <Compile Include="AppCore\RemoveAppdataFolder.cs" />
+    <Compile Include="AppCore\RemoveFolder.cs" />
+    <Compile Include="AppCore\RemoveLavasoftEmptyDirectories.cs" />
+    <Compile Include="AppCore\RemoveShortcut.cs" />
+    <Compile Include="AppCore\ReportUninstallationResultStep.cs" />
+    <Compile Include="AppCore\ReportUpdateResultStep.cs" />
+    <Compile Include="AppCore\RunSpareio.cs" />
+    <Compile Include="AppCore\SelfDeleteFolder.cs" />
+    <Compile Include="AppCore\UninstallInfoStep.cs" />
+    <Compile Include="AppCore\UnInstallService.cs" />
+    <Compile Include="AppCore\UnzipStep.cs" />
+    <Compile Include="AppCore\UpdateInstalledRegistry.cs" />
+    <Compile Include="AppCore\UpdatePrerequisiteStep.cs" />
+    <Compile Include="Controller.cs" />
+    <Compile Include="Exception\CreatePartnerException.cs" />
+    <Compile Include="Exception\DownloadException.cs" />
+    <Compile Include="Exception\ExecuteCommandException.cs" />
+    <Compile Include="Exception\GenericException.cs" />
+    <Compile Include="Exception\MachineInstallIdException.cs" />
+    <Compile Include="Exception\RemoveFolderException.cs" />
+    <Compile Include="Exception\StopProcessException.cs" />
+    <Compile Include="Exception\UnzipException.cs" />
+    <Compile Include="Helper\CpuHelper.cs" />
+    <Compile Include="Helper\ExtensionHelper.cs" />
+    <Compile Include="Helper\FileHelper.cs" />
+    <Compile Include="Helper\GpuHelper.cs" />
+    <Compile Include="Helper\PowerEnumerator.cs" />
+    <Compile Include="Helper\SystemHelper.cs" />
+    <Compile Include="Service\CompleteInstallInfo.cs" />
+    <Compile Include="Service\CompleteUninstallInfo.cs" />
+    <Compile Include="Service\CompleteUpdateInfo.cs" />
+    <Compile Include="Service\ErrorInstallInfo.cs" />
+    <Compile Include="Service\ErrorUninstallInfo.cs" />
+    <Compile Include="Service\ErrorUpdateInfo.cs" />
+    <Compile Include="Service\EventService.cs" />
+    <Compile Include="Service\RestService.cs" />
+    <Compile Include="UninstallMainWindow.xaml.cs">
+      <DependentUpon>UninstallMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\CommunicationUtils.cs" />
+    <Compile Include="Utils\FingerPrint.cs" />
+    <Compile Include="Utils\InstallUtils.cs" />
+    <Compile Include="Utils\ProcessAsUser.cs" />
+    <Compile Include="AppCore\RemoveUninstallInfoStep.cs" />
+    <Compile Include="Utils\ReportDataCollector.cs" />
+    <Compile Include="Utils\ServiceUtils.cs" />
+    <Compile Include="Utils\ShFileUtils.cs" />
+    <Compile Include="AppCore\StopProcess.cs" />
+    <Compile Include="Utils\ZipUtils.cs" />
+    <Page Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Utils\BrowserNavigator.cs" />
+    <Compile Include="Utils\CmdLineArgs.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="UninstallMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Lib\ICSharpCode.SharpZipLib.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

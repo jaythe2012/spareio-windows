@@ -1,0 +1,14 @@
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\_build\Debug\SpareioWinService.exe
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\_build\Debug\SpareioWinService.pdb
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWinService\obj\Debug\Spareio.WinService.csprojResolveAssemblyReference.cache
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWinService\obj\Debug\Spareio.WinService.ProjectInstaller.resources
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWinService\obj\Debug\Spareio.WinService.csproj.GenerateResource.Cache
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWinService\obj\Debug\SpareioWinService.exe
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWinService\obj\Debug\SpareioWinService.pdb
+C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\_build\Debug\SpareioWinService.exe
+C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\_build\Debug\SpareioWinService.pdb
+C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\XRewardWinService\obj\Debug\Spareio.WinService.csprojResolveAssemblyReference.cache
+C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\XRewardWinService\obj\Debug\Spareio.WinService.ProjectInstaller.resources
+C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\XRewardWinService\obj\Debug\Spareio.WinService.csproj.GenerateResource.Cache
+C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\XRewardWinService\obj\Debug\SpareioWinService.exe
+C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\XRewardWinService\obj\Debug\SpareioWinService.pdb

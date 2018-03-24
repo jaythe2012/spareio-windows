@@ -1,0 +1,14 @@
+C:\adaware\xReward\XReward\_build\Debug\CoreLib.dll
+C:\adaware\xReward\XReward\_build\Debug\CoreLib.pdb
+C:\adaware\xReward\XReward\CoreLib\obj\Debug\CoreLib.csprojResolveAssemblyReference.cache
+C:\adaware\xReward\XReward\CoreLib\obj\Debug\CoreLib.dll
+C:\adaware\xReward\XReward\CoreLib\obj\Debug\CoreLib.pdb
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\_build\Debug\CoreLib.dll
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\_build\Debug\CoreLib.pdb
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\CoreLib\obj\Debug\CoreLib.csprojResolveAssemblyReference.cache
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\CoreLib\obj\Debug\CoreLib.dll
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\CoreLib\obj\Debug\CoreLib.pdb
+C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\_build\Debug\CoreLib.dll
+C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\_build\Debug\CoreLib.pdb
+C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\CoreLib\obj\Debug\CoreLib.dll
+C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\CoreLib\obj\Debug\CoreLib.pdb

@@ -1,0 +1,7 @@
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\_build\Debug\SparioWinService.exe
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\_build\Debug\SparioWinService.pdb
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWinService\obj\Debug\Spario.WinService.csprojResolveAssemblyReference.cache
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWinService\obj\Debug\Spario.WinService.ProjectInstaller.resources
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWinService\obj\Debug\Spario.WinService.csproj.GenerateResource.Cache
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWinService\obj\Debug\SparioWinService.exe
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWinService\obj\Debug\SparioWinService.pdb

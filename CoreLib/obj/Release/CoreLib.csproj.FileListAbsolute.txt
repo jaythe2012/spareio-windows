@@ -1,0 +1,4 @@
+C:\adaware\xReward\XReward\_build\Release\CoreLib.dll
+C:\adaware\xReward\XReward\_build\Release\CoreLib.pdb
+C:\adaware\xReward\XReward\CoreLib\obj\Release\CoreLib.dll
+C:\adaware\xReward\XReward\CoreLib\obj\Release\CoreLib.pdb

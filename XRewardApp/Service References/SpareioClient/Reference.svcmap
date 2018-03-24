@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="12d02046-6d98-4018-9a33-61d931914439" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:7097/SpareioWCF" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SpareioWCF.xsd" MetadataType="Schema" ID="8e0b0c88-bcff-40ca-80bf-3dfc797d7046" SourceId="1" SourceUrl="http://localhost:7097/SpareioWCF?xsd=xsd0" />
+    <MetadataFile FileName="SpareioWCF.wsdl" MetadataType="Wsdl" ID="0d65144b-d018-467c-90cf-54a8a33f3ddd" SourceId="1" SourceUrl="http://localhost:7097/SpareioWCF?wsdl" />
+    <MetadataFile FileName="SpareioWCF1.xsd" MetadataType="Schema" ID="b42433df-f042-4178-9db3-475554d29ce5" SourceId="1" SourceUrl="http://localhost:7097/SpareioWCF?xsd=xsd1" />
+    <MetadataFile FileName="SpareioWCF.disco" MetadataType="Disco" ID="6ceba464-9b16-4869-b61e-769e0417902b" SourceId="1" SourceUrl="http://localhost:7097/SpareioWCF?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

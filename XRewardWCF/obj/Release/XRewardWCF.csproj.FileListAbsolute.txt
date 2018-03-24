@@ -1,0 +1,4 @@
+C:\adaware\xReward\XReward\_build\Release\XRewardWCF.dll
+C:\adaware\xReward\XReward\_build\Release\XRewardWCF.pdb
+C:\adaware\xReward\XReward\XRewardWCF\obj\Release\XRewardWCF.dll
+C:\adaware\xReward\XReward\XRewardWCF\obj\Release\XRewardWCF.pdb

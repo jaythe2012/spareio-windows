@@ -1,0 +1,5 @@
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\_build\Debug\SparioWCF.dll
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\_build\Debug\SparioWCF.pdb
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWCF\obj\Debug\SparioWCF.dll
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWCF\obj\Debug\SparioWCF.pdb
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWCF\obj\Debug\Spario.WCF.csprojResolveAssemblyReference.cache

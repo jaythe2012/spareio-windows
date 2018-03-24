@@ -1,0 +1,12 @@
+C:\adaware\xReward\XReward\_build\Debug\XRewardWinService.exe
+C:\adaware\xReward\XReward\_build\Debug\XRewardWinService.pdb
+C:\adaware\xReward\XReward\XRewardWinService\obj\Debug\XRewardWinService.csprojResolveAssemblyReference.cache
+C:\adaware\xReward\XReward\XRewardWinService\obj\Debug\XRewardWinService.ProjectInstaller.resources
+C:\adaware\xReward\XReward\XRewardWinService\obj\Debug\XRewardWinService.csproj.GenerateResource.Cache
+C:\adaware\xReward\XReward\XRewardWinService\obj\Debug\XRewardWinService.exe
+C:\adaware\xReward\XReward\XRewardWinService\obj\Debug\XRewardWinService.pdb
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWinService\obj\Debug\XRewardWinService.csprojResolveAssemblyReference.cache
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWinService\obj\Debug\XRewardWinService.ProjectInstaller.resources
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWinService\obj\Debug\XRewardWinService.csproj.GenerateResource.Cache
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWinService\obj\Debug\XRewardWinService.exe
+C:\Users\vishal.dhaduk\Desktop\Drive\BlobStation\Jay\xRewardDec2017\XRewardWinService\obj\Debug\XRewardWinService.pdb
