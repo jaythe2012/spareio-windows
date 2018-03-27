@@ -16,7 +16,7 @@ namespace Spareio.WinService.Helper
         private static Guid GUID_BATTERY_SUBGROUP = new Guid("e73a048d-bf27-4f12-9731-8b2076e8891f");
         private static Guid GUID_SLEEP_SUBGROUP = new Guid("238C9FA8-0AAD-41ED-83F4-97BE242C8F20");
         private static Guid GUID_PCIEXPRESS_SETTINGS_SUBGROUP = new Guid("501a4d13-42af-4429-9fd1-a8218c268e20");
-
+         
 
         [DllImport("powrprof.dll")]
         static extern uint PowerEnumerate(
