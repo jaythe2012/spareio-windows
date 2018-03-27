@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Timers;
 using CoreLib;
+using Spareio.WinService.DB;
 
 namespace Spareio.WinService.Helper
 {
@@ -63,8 +64,8 @@ namespace Spareio.WinService.Helper
 
         private static void CpuReadTimerOnElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
         {
-            cpuTotal = XmlHelper.ReadSetting(VariableConstants.CpuTotal);
-            cpuCount = XmlHelper.ReadSetting(VariableConstants.CpuCount);
+            cpuTotal = DBHelper.GetValById(VariableConstants.CpuTotal);
+            cpuCount = DBHelper.GetValById(VariableConstants.CpuCount);
         }
 
         private static void CpuWriteTimerElapsed(object sender, ElapsedEventArgs e)
@@ -81,7 +82,7 @@ namespace Spareio.WinService.Helper
                 int cpuCountNumber = Convert.ToInt32(cpuCount) + 1;
                 cpuDictionary[VariableConstants.CpuTotal]= cpuTotalNumber.ToString();
                 cpuDictionary[VariableConstants.CpuCount] =  cpuCountNumber.ToString();
-                XmlHelper.UpdateSettingInBulk(cpuDictionary);
+                DBHelper.UpdateInBulk(cpuDictionary);
             }
             catch (Exception ex)
             {

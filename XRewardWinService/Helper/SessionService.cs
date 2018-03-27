@@ -1,5 +1,5 @@
 ﻿using System;
-using CoreLib;
+using Spareio.WinService.DB;
 
 namespace Spareio.WinService.Helper
 {
@@ -8,25 +8,25 @@ namespace Spareio.WinService.Helper
         public static void HandleLogOff()
         {
             DateTime now = DateTime.Now;
-            string lastloginTime = XmlHelper.ReadSetting(VariableConstants.LastLoggedInTime);
+            string lastloginTime = DBHelper.GetValById(VariableConstants.LastLoggedInTime);
             DateTime dateValue;
             if (DateTime.TryParse(lastloginTime, out dateValue))
             {
                 double diffInSeconds = (now - dateValue).TotalSeconds;
-                string totalLoggedInSeconds = XmlHelper.ReadSetting(VariableConstants.TotalLoggedInSeconds);
+                string totalLoggedInSeconds = DBHelper.GetValById(VariableConstants.TotalLoggedInSeconds);
                 int LoggedInSeconds = 0;
                 Int32.TryParse(totalLoggedInSeconds, out LoggedInSeconds);
                 LoggedInSeconds = LoggedInSeconds + Convert.ToInt32(diffInSeconds);
-                XmlHelper.UpdateSetting(VariableConstants.TotalLoggedInSeconds,LoggedInSeconds.ToString());
-                XmlHelper.UpdateSetting(VariableConstants.IsLoggedIn, "False");
+                DBHelper.Update(VariableConstants.TotalLoggedInSeconds,LoggedInSeconds.ToString());
+                DBHelper.Update(VariableConstants.IsLoggedIn, "False");
             }
 
         }
 
         internal static void HandleLogIn()
         {
-            XmlHelper.UpdateSetting(VariableConstants.LastLoggedInTime, DateTime.Now.ToString());
-            XmlHelper.UpdateSetting(VariableConstants.IsLoggedIn, "True");
+            DBHelper.Update(VariableConstants.LastLoggedInTime, DateTime.Now.ToString());
+            DBHelper.Update(VariableConstants.IsLoggedIn, "True");
         }
     }
 }

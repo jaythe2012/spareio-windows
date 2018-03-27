@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using CoreLib;
+using Spareio.WinService.DB;
 
 namespace Spareio.WinService.Helper
 {
@@ -18,8 +19,8 @@ namespace Spareio.WinService.Helper
             try
             {
                 LogWriter.Info("Handling plugOut in PowerService");
-                XmlHelper.UpdateSetting(VariableConstants.LastBatteryOnTime, DateTime.Now.ToString());
-                XmlHelper.UpdateSetting(VariableConstants.IsOnBattery, "True");
+                DBHelper.Update(VariableConstants.LastBatteryOnTime, DateTime.Now.ToString());
+                DBHelper.Update(VariableConstants.IsOnBattery, "True");
             }
             catch (Exception ex)
             {
@@ -32,21 +33,21 @@ namespace Spareio.WinService.Helper
             try
             {
                 LogWriter.Info("Handling plugIn in PowerService");
-                XmlHelper.UpdateSetting(VariableConstants.IsOnBattery, "False");
+                DBHelper.Update(VariableConstants.IsOnBattery, "False");
                 DateTime now = DateTime.Now;
-                string lastBatteryOnTime = XmlHelper.ReadSetting(VariableConstants.LastBatteryOnTime);
+                string lastBatteryOnTime = DBHelper.GetValById(VariableConstants.LastBatteryOnTime);
                 if (!String.IsNullOrEmpty(lastBatteryOnTime))
                 {
                     DateTime dateValue;
                     if (DateTime.TryParse(lastBatteryOnTime, out dateValue))
                     {
                         double diffInSeconds = (now - dateValue).TotalSeconds;
-                        string totalBatterySeconds = XmlHelper.ReadSetting(VariableConstants.TotalBatteryTime);
+                        string totalBatterySeconds = DBHelper.GetValById(VariableConstants.TotalBatteryTime);
                         int onBatterySeconds = 0;
                         if (!String.IsNullOrEmpty(totalBatterySeconds))
                             Int32.TryParse(totalBatterySeconds, out onBatterySeconds);
                         onBatterySeconds = onBatterySeconds + Convert.ToInt32(diffInSeconds);
-                        XmlHelper.UpdateSetting(VariableConstants.TotalBatteryTime, onBatterySeconds.ToString());
+                        DBHelper.Update(VariableConstants.TotalBatteryTime, onBatterySeconds.ToString());
                     }
                 }
             }

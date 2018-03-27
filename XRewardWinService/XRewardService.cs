@@ -7,11 +7,13 @@ using System.Windows.Forms;
 using CoreLib;
 using Spareio.WinService.Helper;
 using System.ServiceModel;
+using Spareio.WinService.DB;
 
 namespace Spareio.WinService
 {
     public partial class XRewardService : ServiceBase
     {
+        private static readonly log4net.ILog _logWriter = log4net.LogManager.GetLogger(typeof(XRewardService));
         private System.Timers.Timer _hourlyTimer;
         ServiceHost myHost;
 
@@ -24,19 +26,24 @@ namespace Spareio.WinService
             this.CanShutdown = true;
         }
 
+        public void OnDebug()
+        {
+            OnStart(new string[] { "0" });
+        }
         protected override void OnStart(string[] args)
         {
             //Refactor: Add debug condition for testing purpose
 
-            EnableLogging();
+            //EnableLogging();
             EnableTimer();
 
             //Refactor: Change XML to LiteDB : Location - C:\ProgramData\Spareio\Config
-            XmlHelper.Initialize("settings", DateTime.Now.ToString());
-            XmlHelper.LoadInMemory();
+            DBHelper._currentRewardId = DBHelper.Initialize(DateTime.Now.ToString());
+
+            //XmlHelper.LoadInMemory();
 
             //Refactor : Change logging to log4Net
-            LogWriter.Info("Spareio winservice started");
+            _logWriter.Info("Spareio winservice started");
 
             //Adding wcf host urlacl
             new Thread(AddUrlAcl).Start();
@@ -45,10 +52,10 @@ namespace Spareio.WinService
             if (args.Length > 0)
             {
                 isLoggedIn = args.Length > 0;
-                XmlHelper.UpdateSetting(VariableConstants.xToken, args[0]);
+                DBHelper.Update(VariableConstants.xToken, args[0]);
             }
             else
-                LogWriter.Info("Service started without token");
+                _logWriter.Info("Service started without token");
 
             //Monitoring start
             MonitorService.Initialize(isLoggedIn);
@@ -58,7 +65,7 @@ namespace Spareio.WinService
 
         private void OpenWCFHost()
         {
-            LogWriter.Info("Opening wcf host Process ");
+            _logWriter.Info("Opening wcf host Process ");
             try
             {
                 myHost = new ServiceHost(typeof(Spareio.WCF.SpareioWCF));
@@ -70,22 +77,22 @@ namespace Spareio.WinService
             }
             catch (Exception ex)
             {
-                LogWriter.Error("Error while opening host "+ex.Message);
+                _logWriter.Error("Error while opening host " + ex.Message);
             }
         }
 
         protected override void OnStop()
         {
-            LogWriter.Info("Time to send hourly event with proper trigger");
-            XmlHelper.UpdateSetting(VariableConstants.ServiceStopTime,DateTime.Now.ToString());
+            _logWriter.Info("Time to send hourly event with proper trigger");
+            DBHelper.Update(VariableConstants.ServiceStopTime, DateTime.Now.ToString());
             MonitorService.Stop("close");
-            if(myHost != null)
+            if (myHost != null)
                 myHost.Close();
         }
 
         protected override void OnShutdown()
         {
-            LogWriter.Info("Shutting down");
+            _logWriter.Info("Shutting down");
             MonitorService.Stop("ShutDown");
             if (myHost != null)
                 myHost.Close();
@@ -96,8 +103,8 @@ namespace Spareio.WinService
         {
             try
             {
-                LogWriter.Enable = true;
-                LogWriter.Initialize("XRewardService");
+                //_logWriter.Enable = true;
+                //_logWriter.Initialize("XRewardService");
             }
             catch (Exception ex)
             {
@@ -115,32 +122,35 @@ namespace Spareio.WinService
 
         private void HourlyTimerOnElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
         {
-            LogWriter.Info("Timer elapsed.. time to send event");
+            _logWriter.Info("Timer elapsed.. time to send event");
             MonitorService.Stop("Interval");
+
             bool isLoggedIn = true;
-            Boolean.TryParse(XmlHelper.ReadSetting(VariableConstants.IsLoggedIn), out isLoggedIn); 
+            DBHelper._currentRewardId = 0;
+
+            Boolean.TryParse(DBHelper.GetValById(VariableConstants.IsLoggedIn), out isLoggedIn);
             MonitorService.Initialize(isLoggedIn);
         }
 
         protected override void OnSessionChange(SessionChangeDescription changeDescription)
         {
-            LogWriter.Info("Session switched");
+            _logWriter.Info("Session switched");
             switch (changeDescription.Reason)
             {
                 case SessionChangeReason.SessionLock:
-                    LogWriter.Info(string.Format("Locked at {0}", DateTime.Now));
+                    _logWriter.Info(string.Format("Locked at {0}", DateTime.Now));
                     SessionService.HandleLogOff();
                     break;
                 case SessionChangeReason.SessionLogoff:
-                    LogWriter.Info(string.Format("Logged Off at {0}", DateTime.Now));
+                    _logWriter.Info(string.Format("Logged Off at {0}", DateTime.Now));
                     SessionService.HandleLogOff();
                     break;
                 case SessionChangeReason.SessionLogon:
-                    LogWriter.Info(string.Format("Logged On at {0}", DateTime.Now));
+                    _logWriter.Info(string.Format("Logged On at {0}", DateTime.Now));
                     SessionService.HandleLogIn();
                     break;
                 case SessionChangeReason.SessionUnlock:
-                    LogWriter.Info(string.Format("Unlocked at {0}", DateTime.Now));
+                    _logWriter.Info(string.Format("Unlocked at {0}", DateTime.Now));
                     SessionService.HandleLogIn();
                     break;
                 default:
@@ -151,7 +161,7 @@ namespace Spareio.WinService
 
         protected override bool OnPowerEvent(PowerBroadcastStatus powerStatus)
         {
-            LogWriter.Info("Power Mode change detected");
+            _logWriter.Info("Power Mode change detected");
             PowerStatus status = SystemInformation.PowerStatus;
             if (powerStatus == PowerBroadcastStatus.PowerStatusChange)
             {
@@ -163,12 +173,12 @@ namespace Spareio.WinService
 
             else if (powerStatus.HasFlag(PowerBroadcastStatus.ResumeSuspend))
             {
-                LogWriter.Info("Resume suspended coming back from sleep");
+                _logWriter.Info("Resume suspended coming back from sleep");
             }
 
             else if (powerStatus.HasFlag(PowerBroadcastStatus.ResumeAutomatic))
             {
-                LogWriter.Info("Resume suspended coming back from sleep automatic");
+                _logWriter.Info("Resume suspended coming back from sleep automatic");
                 MonitorService.Initialize();
             }
 
@@ -176,8 +186,8 @@ namespace Spareio.WinService
             {
                 MonitorService.Stop("Sleep");
 
-                LogWriter.Info("Going in sleeping mode");
-                LogWriter.Info("Query suspended going to sleep");
+                _logWriter.Info("Going in sleeping mode");
+                _logWriter.Info("Query suspended going to sleep");
                 //MonitorService.Stop("Sleep");
             }
 
@@ -198,7 +208,7 @@ namespace Spareio.WinService
             }
             catch (Exception ex)
             {
-                LogWriter.Info("Error while adding url " + ex.Message);
+                _logWriter.Info("Error while adding url " + ex.Message);
             }
         }
 

@@ -3,3 +3,8 @@
 ################################################################################
 
 /_build/Debug/Spareio.vshost.exe.manifest
+/.vs/XReward/v15
+/Lib
+/Spareio.Uninstaller/obj/Debug
+/XRewardInstaller/Lib.zip
+/Lib.zip
