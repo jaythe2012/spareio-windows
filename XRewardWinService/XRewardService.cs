@@ -68,7 +68,7 @@ namespace Spareio.WinService
             CpuService.Initialize();
 
 
-            _logWriter.Info("Init mine on startup.");
+
             if (InitMine())
             {
                 MineService.mineCounter += 1;
@@ -151,8 +151,8 @@ namespace Spareio.WinService
 
         private bool InitMine()
         {
+            _logWriter.Info("Mine initialization");
 
-            MineService.ReadyToMine();
             if (MineService.ReadyToMine())
             {
                 DBHelper.CurrentRewardId = DBHelper.Initialize(DateTime.Now.ToString());
@@ -179,6 +179,7 @@ namespace Spareio.WinService
         {
             if (MineService.ReadyToMine())
             {
+                _logWriter.Info("Continue mining");
                 CpuService.UpdateCpuAverage();
             }
 
@@ -187,15 +188,20 @@ namespace Spareio.WinService
         private void ResetMine()
         {
             bool isLoggedIn = true;
+
             var timeToWorkPerDay = (MineService.timeToWorkPerDay != 0 ? MineService.timeToWorkPerDay : (60 * 60)) / 60;
 
 
             SendTelemetry("Interval");
 
             if (MineService.mineCounter >= timeToWorkPerDay)
+            {
+                _logWriter.Info("Reset mine counter after configured mining have been done");
                 MineService.mineCounter = 0;
+            }
             else
             {
+                _logWriter.Info("Reset mine variables after every hour");
                 Boolean.TryParse(DBHelper.GetValById(VariableConstants.IsLoggedIn), out isLoggedIn);
                 MonitorService.Initialize(isLoggedIn);
 
