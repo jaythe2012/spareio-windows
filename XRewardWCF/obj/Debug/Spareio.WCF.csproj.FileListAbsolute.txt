@@ -7,3 +7,10 @@ C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\_build\Debug\SpareioWCF.dll
 C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\_build\Debug\SpareioWCF.pdb
 C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\XRewardWCF\obj\Debug\SpareioWCF.dll
 C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\XRewardWCF\obj\Debug\SpareioWCF.pdb
+E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWCF.dll.config
+E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWCF.dll
+E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWCF.pdb
+E:\BlobStation\Jay\Projects\spareio-windows\XRewardWCF\obj\Debug\Spareio.WCF.csprojResolveAssemblyReference.cache
+E:\BlobStation\Jay\Projects\spareio-windows\XRewardWCF\obj\Debug\Spareio.WCF.csproj.CoreCompileInputs.cache
+E:\BlobStation\Jay\Projects\spareio-windows\XRewardWCF\obj\Debug\SpareioWCF.dll
+E:\BlobStation\Jay\Projects\spareio-windows\XRewardWCF\obj\Debug\SpareioWCF.pdb

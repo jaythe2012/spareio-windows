@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using CoreLib;
 using Spareio.WinService.DB;
 using Spareio.WinService.Helper;
 
@@ -8,23 +7,25 @@ namespace Spareio.WinService
 {
     public class MonitorService
     {
-        public static void Initialize(bool isLoggedIn=false)
+        private static readonly log4net.ILog _logWriter = log4net.LogManager.GetLogger(typeof(MonitorService));
+
+        public static void Initialize(bool isLoggedIn = false)
         {
-            
+
             InitializeVariablesBulk(isLoggedIn);
-            CpuService.Initialize();
+           // CpuService.Initialize();
 
             //TODO: Initialize miner engine which returns true/false to determine miner should be running or not
         }
 
         private static void InitializeVariablesBulk(bool isLoggedIn)
         {
-            Dictionary<string,string> dictionary = new Dictionary<string, string>();
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
             dictionary.Add(VariableConstants.MonitorStartTime, DateTime.Now.ToString());
             dictionary.Add(VariableConstants.LastLoggedInTime, DateTime.Now.ToString());
             dictionary.Add(VariableConstants.TotalLoggedInSeconds, "0");
             dictionary.Add(VariableConstants.IsLoggedIn, isLoggedIn ? "True" : "False");
-            dictionary.Add(VariableConstants.CpuTotal, "0.0");  
+            dictionary.Add(VariableConstants.CpuTotal, "0.0");
             dictionary.Add(VariableConstants.CpuCount, "0");
             dictionary.Add(VariableConstants.IsOnBattery, PowerService.IsOnBattery().ToString());
             dictionary.Add(VariableConstants.TotalBatteryTime, "0");
@@ -33,7 +34,7 @@ namespace Spareio.WinService
             else
                 dictionary.Add(VariableConstants.LastBatteryOnTime, "0");
 
-            if (DBHelper._currentRewardId == 0)
+            if (DBHelper.CurrentRewardId == 0)
                 DBHelper.InitializeInBulk(dictionary);
             else
                 DBHelper.UpdateInBulk(dictionary);
@@ -42,7 +43,7 @@ namespace Spareio.WinService
 
         internal static void Stop(string trigger)
         {
-            LogWriter.Info("Sending event for trigger "+trigger);
+            _logWriter.Info("Sending event for trigger " + trigger);
             TelemetryService.SendInfo(trigger);
         }
     }

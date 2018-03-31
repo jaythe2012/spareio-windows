@@ -18,7 +18,7 @@ namespace Spareio.WinService.DB
         private static Object _thisLock = new Object();
         private static readonly log4net.ILog _logWriter = log4net.LogManager.GetLogger(typeof(DBHelper));
 
-        public static int _currentRewardId = 0;
+        public static int CurrentRewardId = 0;
 
         public static int Initialize(string initTime)
         {
@@ -52,13 +52,11 @@ namespace Spareio.WinService.DB
 
                     });
 
-
                     using (var db = new LiteDatabase(dbPath + "\\xreward.db"))
                     {
                         var xRewardDetails = db.GetCollection<XRewardModel>("xRewadModeldetails");
                         result = xRewardDetails.Insert(xRewardModel);
                     }
-
                 }
             }
             catch (Exception ex)
@@ -128,7 +126,7 @@ namespace Spareio.WinService.DB
                 using (var db = new LiteDatabase(dbPath + "\\xreward.db"))
                 {
                     var xRewadModelDetails = db.GetCollection<XRewardModel>(tableName);
-                    return xRewadModelDetails.Find(x => x.Id == _currentRewardId).FirstOrDefault();
+                    return xRewadModelDetails.Find(x => x.Id == CurrentRewardId).FirstOrDefault();
                 }
             }
             catch (Exception ex)

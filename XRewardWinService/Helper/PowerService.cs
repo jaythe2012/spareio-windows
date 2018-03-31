@@ -7,6 +7,8 @@ namespace Spareio.WinService.Helper
 {
     class PowerService
     {
+        private static readonly log4net.ILog _logWriter = log4net.LogManager.GetLogger(typeof(PowerService));
+
         static PowerStatus status = SystemInformation.PowerStatus;
 
         internal static bool IsOnBattery()
@@ -18,7 +20,7 @@ namespace Spareio.WinService.Helper
         {
             try
             {
-                LogWriter.Info("Handling plugOut in PowerService");
+                _logWriter.Info("Handling plugOut in PowerService");
                 DBHelper.Update(VariableConstants.LastBatteryOnTime, DateTime.Now.ToString());
                 DBHelper.Update(VariableConstants.IsOnBattery, "True");
             }
@@ -32,7 +34,7 @@ namespace Spareio.WinService.Helper
         {
             try
             {
-                LogWriter.Info("Handling plugIn in PowerService");
+                _logWriter.Info("Handling plugIn in PowerService");
                 DBHelper.Update(VariableConstants.IsOnBattery, "False");
                 DateTime now = DateTime.Now;
                 string lastBatteryOnTime = DBHelper.GetValById(VariableConstants.LastBatteryOnTime);
@@ -53,7 +55,7 @@ namespace Spareio.WinService.Helper
             }
             catch (Exception ex)
             {
-                LogWriter.Error("Error while handling PlugIn" +ex.Message);
+                _logWriter.Error("Error while handling PlugIn" +ex.Message);
             }
         }
     }

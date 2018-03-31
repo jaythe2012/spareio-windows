@@ -12,3 +12,9 @@ C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\_build\Debug\CoreLib.dll
 C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\_build\Debug\CoreLib.pdb
 C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\CoreLib\obj\Debug\CoreLib.dll
 C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\CoreLib\obj\Debug\CoreLib.pdb
+E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\CoreLib.dll
+E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\CoreLib.pdb
+E:\BlobStation\Jay\Projects\spareio-windows\CoreLib\obj\Debug\CoreLib.csprojResolveAssemblyReference.cache
+E:\BlobStation\Jay\Projects\spareio-windows\CoreLib\obj\Debug\CoreLib.csproj.CoreCompileInputs.cache
+E:\BlobStation\Jay\Projects\spareio-windows\CoreLib\obj\Debug\CoreLib.dll
+E:\BlobStation\Jay\Projects\spareio-windows\CoreLib\obj\Debug\CoreLib.pdb

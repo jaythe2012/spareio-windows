@@ -1,11 +1,14 @@
-﻿using System;
-using CoreLib;
+﻿using CoreLib;
+using System;
+ 
 
 namespace Spareio.WinService.Helper
 {
    
     public class EventService
     {
+        private static readonly log4net.ILog _logWriter = log4net.LogManager.GetLogger(typeof(EventService));
+
         public static string EventUrl
         {
             get
@@ -23,13 +26,13 @@ namespace Spareio.WinService.Helper
                 var url = String.Format("{0}?Type={1}&ProductID={2}&EventVersion={3}",
                     EventUrl, type, id, version);
 
-                LogWriter.Info("Sending Event on " +url);
+                _logWriter.Info("Sending Event on " +url);
 
                 RestService.SendPostRequest(url, String.Format(@"{{""Data"": {0}}}", progRequest));
             }
             catch (Exception ex)
             {
-                LogWriter.Error("failed in sending event" + ex);
+                _logWriter.Error("failed in sending event" + ex);
             }
         }
     }

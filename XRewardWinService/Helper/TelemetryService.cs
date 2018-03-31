@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Web.Script.Serialization;
-using CoreLib;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using Spareio.WinService.DB;
@@ -13,6 +12,8 @@ namespace Spareio.WinService.Helper
 {
     class TelemetryService
     {
+        private static readonly log4net.ILog _logWriter = log4net.LogManager.GetLogger(typeof(TelemetryService));
+
 
         #region Static Fields
         private static string HourlyType = "HourlyActivity";
@@ -75,7 +76,7 @@ namespace Spareio.WinService.Helper
                 {
                     string str = string.Empty;
                     if (response.StatusCode != HttpStatusCode.OK)
-                        LogWriter.InfoFormat(string.Format("Request failed. Received HTTP {0}", (object)response.StatusCode));
+                        _logWriter.InfoFormat(string.Format("Request failed. Received HTTP {0}", (object)response.StatusCode));
                     using (Stream responseStream = response.GetResponseStream())
                     {
                         if (responseStream != null)
@@ -92,12 +93,12 @@ namespace Spareio.WinService.Helper
                     _displayOff.onBattery = Convert.ToInt32(info.DOBattery);
                     _displayOff.plugged = Convert.ToInt32(info.DOPluggedIn);
                     _inactivityCounterAvg = Convert.ToDouble(info.InactivityCount);
-                    LogWriter.Info("_inactivityCounterAvg" + jsonInfo.InactivityCount);
+                    _logWriter.Info("_inactivityCounterAvg" + jsonInfo.InactivityCount);
                 }
             }
             catch (Exception ex)
             {
-               LogWriter.Error("Error while getting info from App" +ex.Message);
+                _logWriter.Error("Error while getting info from App" +ex.Message);
                 _screenSaver.onBattery = 0;
                 _screenSaver.plugged = 0;
                 _displayOff.onBattery = 0;
@@ -115,7 +116,7 @@ namespace Spareio.WinService.Helper
             }
             catch (Exception ex)
             {
-                LogWriter.Error("Error while getting power profile " + ex.Message);
+                _logWriter.Error("Error while getting power profile " + ex.Message);
             }
         }
 
@@ -145,7 +146,7 @@ namespace Spareio.WinService.Helper
             }
             catch (Exception ex)
             {
-                LogWriter.Error("Error while getting partner, campaign, machineId " + ex.Message);
+                _logWriter.Error("Error while getting partner, campaign, machineId " + ex.Message);
             }
         }
 
@@ -187,7 +188,7 @@ namespace Spareio.WinService.Helper
             }
             catch (Exception ex)
             {
-                LogWriter.Error("Error while counting battery seconds " + ex.Message);
+                _logWriter.Error("Error while counting battery seconds " + ex.Message);
             }
         }
 
@@ -199,7 +200,7 @@ namespace Spareio.WinService.Helper
             }
             catch (Exception ex)
             {
-                LogWriter.Error("Error while counting Inactivity seconds " + ex.Message);
+                _logWriter.Error("Error while counting Inactivity seconds " + ex.Message);
             }
         }
 
@@ -232,7 +233,7 @@ namespace Spareio.WinService.Helper
             }
             catch (Exception ex)
             {
-                LogWriter.Error("Error while counting loggedIn seconds " + ex.Message);
+                _logWriter.Error("Error while counting loggedIn seconds " + ex.Message);
             }
         }
 
@@ -253,7 +254,7 @@ namespace Spareio.WinService.Helper
             }
             catch (Exception ex)
             {
-                LogWriter.Error("Error while counting sample seconds " + ex.Message);
+                _logWriter.Error("Error while counting sample seconds " + ex.Message);
             }
         }
 
@@ -269,7 +270,7 @@ namespace Spareio.WinService.Helper
                     cpuCount = "0";
                 if (cpuCount == "0" || cpuTotal == "0.0")
                 {
-                    LogWriter.Info("Cpu average has zero value count -- " + cpuCount.ToString() + "toatl --" +
+                    _logWriter.Info("Cpu average has zero value count -- " + cpuCount.ToString() + "toatl --" +
                                    cpuTotal.ToString());
                 }
                 else
@@ -281,7 +282,7 @@ namespace Spareio.WinService.Helper
             }
             catch (Exception ex)
             {
-                LogWriter.Error("Error while counting cpu average " +ex.Message);
+                _logWriter.Error("Error while counting cpu average " +ex.Message);
             }
         }
 
@@ -314,12 +315,12 @@ namespace Spareio.WinService.Helper
 
 
                 string body = String.Format(@"{{""Data"": {0}}}", progRequest);
-                LogWriter.Info("Data to be sent -- " + body);
+                _logWriter.Info("Data to be sent -- " + body);
                 EventService.SendReport(HourlyType, ProductId, progRequest, APIVersion);
             }
             catch (Exception ex)
             {
-                LogWriter.Error("Error while preparing Data " + ex.Message);
+                _logWriter.Error("Error while preparing Data " + ex.Message);
             }
 
         }

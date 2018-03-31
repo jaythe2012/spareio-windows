@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Timers;
-using CoreLib;
 using Spareio.WinService.DB;
 
 namespace Spareio.WinService.Helper
 {
     class CpuService
     {
+        private static readonly log4net.ILog _logWriter = log4net.LogManager.GetLogger(typeof(CpuService));
+
         protected static PerformanceCounter cpuCounter;
         private static System.Timers.Timer cpuWriteTimer = null;
         private static System.Timers.Timer cpuReadTimer = null;
@@ -22,7 +23,9 @@ namespace Spareio.WinService.Helper
             cpuCounter.CategoryName = "Processor";
             cpuCounter.CounterName = "% Processor Time";
             cpuCounter.InstanceName = "_Total";
+
             RegisterForCpuTimer();
+
             cpuDictionary = new Dictionary<string, string>();
             cpuDictionary.Add(VariableConstants.CpuTotal, "0.0");
             cpuDictionary.Add(VariableConstants.CpuCount,"0");
@@ -47,15 +50,21 @@ namespace Spareio.WinService.Helper
         {
             try
             {
-                cpuWriteTimer = new System.Timers.Timer();
-                cpuWriteTimer.Interval = 10000;
-                cpuWriteTimer.Elapsed += CpuWriteTimerElapsed;
-                cpuWriteTimer.Enabled = true;
+
+                //Moved code to main timer
+                //By Neha Shah
+
+                //cpuWriteTimer = new System.Timers.Timer();
+                //cpuWriteTimer.Interval = 10000;
+                //cpuWriteTimer.Elapsed += CpuWriteTimerElapsed;
+                //cpuWriteTimer.Enabled = true;
+
+
                 cpuReadTimer = new System.Timers.Timer();
                 cpuReadTimer.Interval = 5000;
                 cpuReadTimer.Elapsed += CpuReadTimerOnElapsed;
                 cpuReadTimer.Enabled = true;
-                LogWriter.Info("Timer Enabled");
+                _logWriter.Info("Timer Enabled");
             }
             catch (Exception ex)
             {
@@ -68,12 +77,12 @@ namespace Spareio.WinService.Helper
             cpuCount = DBHelper.GetValById(VariableConstants.CpuCount);
         }
 
-        private static void CpuWriteTimerElapsed(object sender, ElapsedEventArgs e)
-        {
-            UpdateCpuAverage();
-        }
+        //private static void CpuWriteTimerElapsed(object sender, ElapsedEventArgs e)
+        //{
+        //    UpdateCpuAverage();
+        //}
 
-        internal static void UpdateCpuAverage()
+        public static void UpdateCpuAverage()
         {
             try
             {
@@ -86,7 +95,7 @@ namespace Spareio.WinService.Helper
             }
             catch (Exception ex)
             {
-                LogWriter.Error("Error while updating CPU Info" + ex.Message);
+                _logWriter.Error("Error while updating CPU Info" + ex.Message);
             }
 
         }

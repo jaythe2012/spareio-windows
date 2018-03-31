@@ -12,3 +12,13 @@ C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\XRewardWinService\obj\Debug\Spa
 C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\XRewardWinService\obj\Debug\Spareio.WinService.csproj.GenerateResource.Cache
 C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\XRewardWinService\obj\Debug\SpareioWinService.exe
 C:\adaware\Rebrand\SpereioDec2017\xRewardDec2017\XRewardWinService\obj\Debug\SpareioWinService.pdb
+E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe.config
+E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.pdb
+E:\BlobStation\Jay\Projects\spareio-windows\XRewardWinService\obj\Debug\Spareio.WinService.csprojResolveAssemblyReference.cache
+E:\BlobStation\Jay\Projects\spareio-windows\XRewardWinService\obj\Debug\Spareio.WinService.ProjectInstaller.resources
+E:\BlobStation\Jay\Projects\spareio-windows\XRewardWinService\obj\Debug\Spareio.WinService.csproj.GenerateResource.cache
+E:\BlobStation\Jay\Projects\spareio-windows\XRewardWinService\obj\Debug\Spareio.WinService.csproj.CoreCompileInputs.cache
+E:\BlobStation\Jay\Projects\spareio-windows\XRewardWinService\obj\Debug\Spareio.WinService.csproj.CopyComplete
+E:\BlobStation\Jay\Projects\spareio-windows\XRewardWinService\obj\Debug\SpareioWinService.exe
+E:\BlobStation\Jay\Projects\spareio-windows\XRewardWinService\obj\Debug\SpareioWinService.pdb
