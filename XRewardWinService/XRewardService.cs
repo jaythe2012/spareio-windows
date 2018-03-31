@@ -59,12 +59,16 @@ namespace Spareio.WinService
             if ((_args != null && _args.Length > 0) == false)
                 _logWriter.Info("Service started without token");
 
+
+            //Ping service every on service start
+            _logWriter.Info("Ping Mine Server");
+            MineService.PingMineServer();
+
             //Cpu Service Initialization
             CpuService.Initialize();
 
-            //Ping service every on service start
-            MineService.PingMineServer();
 
+            _logWriter.Info("Init mine on startup.");
             if (InitMine())
             {
                 MineService.mineCounter += 1;
@@ -140,7 +144,6 @@ namespace Spareio.WinService
                 if (minutes == 60)
                 {
                     _logWriter.Info("Hour elapsed.. time to send event");
-                    SendTelemetry("close");
                     ResetMine();
                 }
             }
@@ -148,6 +151,8 @@ namespace Spareio.WinService
 
         private bool InitMine()
         {
+
+            MineService.ReadyToMine();
             if (MineService.ReadyToMine())
             {
                 DBHelper.CurrentRewardId = DBHelper.Initialize(DateTime.Now.ToString());
@@ -184,6 +189,7 @@ namespace Spareio.WinService
             bool isLoggedIn = true;
             var timeToWorkPerDay = (MineService.timeToWorkPerDay != 0 ? MineService.timeToWorkPerDay : (60 * 60)) / 60;
 
+
             SendTelemetry("Interval");
 
             if (MineService.mineCounter >= timeToWorkPerDay)
@@ -207,7 +213,7 @@ namespace Spareio.WinService
             _logWriter.Info("Time to send hourly event with proper trigger");
             DBHelper.Update(VariableConstants.ServiceStopTime, DateTime.Now.ToString());
 
-            SendTelemetry("close");
+            SendTelemetry("Close");
 
             if (myHost != null)
                 myHost.Close();
@@ -227,6 +233,7 @@ namespace Spareio.WinService
 
         private void SendTelemetry(string trigger)
         {
+            _logWriter.Info("Send Telemetry - " + trigger);
             MonitorService.Stop(trigger);
         }
 
@@ -283,7 +290,8 @@ namespace Spareio.WinService
 
             else if (powerStatus.HasFlag(PowerBroadcastStatus.QuerySuspend))
             {
-                MonitorService.Stop("Sleep");
+                //  MonitorService.Stop("Sleep");
+                SendTelemetry("Sleep");
 
                 _logWriter.Info("Going in sleeping mode");
                 _logWriter.Info("Query suspended going to sleep");

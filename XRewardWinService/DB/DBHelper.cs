@@ -32,6 +32,8 @@ namespace Spareio.WinService.DB
 
                 XRewardModel xRewardModel = new XRewardModel();
                 xRewardModel.InitTime = initTime;
+
+                xRewadModelDetails.EnsureIndex(x => x.Id, true);
                 result = xRewadModelDetails.Insert(xRewardModel);
 
                 return result;
@@ -54,7 +56,9 @@ namespace Spareio.WinService.DB
 
                     using (var db = new LiteDatabase(dbPath + "\\xreward.db"))
                     {
-                        var xRewardDetails = db.GetCollection<XRewardModel>("xRewadModeldetails");
+                        var xRewardDetails = db.GetCollection<XRewardModel>(tableName);
+                        xRewardDetails.EnsureIndex(x => x.Id, true);
+
                         result = xRewardDetails.Insert(xRewardModel);
                     }
                 }
@@ -78,10 +82,10 @@ namespace Spareio.WinService.DB
                 var existingxRewardModel = Get();
 
                 //Get Table
-                var xRewardDetails = db.GetCollection<XRewardModel>("xRewadModeldetails");
+                var xRewardDetails = db.GetCollection<XRewardModel>(tableName);
                 XRewardModel xRewardModel = BuildxRewardModel(key, value, existingxRewardModel);
                 xRewardDetails.Update(xRewardModel);
-                
+
                 return result;
             }
 
@@ -97,18 +101,17 @@ namespace Spareio.WinService.DB
                 lock (_thisLock)
                 {
                     keyValDictionary.ToList().ForEach(f =>
-                    {
-                        xRewardModel = BuildxRewardModel(f.Key, f.Value, existingxRewardModel);
+                {
+                    xRewardModel = BuildxRewardModel(f.Key, f.Value, existingxRewardModel);
 
-                    });
+                });
 
 
                     using (var db = new LiteDatabase(dbPath + "\\xreward.db"))
                     {
-                        var xRewardDetails = db.GetCollection<XRewardModel>("xRewadModeldetails");
+                        var xRewardDetails = db.GetCollection<XRewardModel>(tableName);
                         xRewardDetails.Update(xRewardModel);
                     }
-
                 }
             }
             catch (Exception ex)

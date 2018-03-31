@@ -85,8 +85,8 @@ namespace Spareio.WinService.Helper
 
             if (mineModel.OnBattery != null)
             {
-                var batteryCharge = mineModel.BatteryCharge;
-                result = ValidateComparision(PowerService.IsOnBattery().ToString(), batteryCharge.Comparision, batteryCharge.Value);
+                var onBattery = mineModel.OnBattery;
+                result = ValidateComparision(PowerService.IsOnBattery().ToString(), onBattery.Comparision, onBattery.Value);
                 if (result == false) return result;
             }
 
@@ -126,8 +126,7 @@ namespace Spareio.WinService.Helper
                     result = bool.Parse(e.Evaluate().ToString());
                     break;
                 case "EQ":
-                    e = new NCalc.Expression(valueToCompare + " == " + value);
-                    result = bool.Parse(e.Evaluate().ToString());
+                    result = (valueToCompare.ToLower() == value.ToLower());
                     break;
                 default:
                     break;
