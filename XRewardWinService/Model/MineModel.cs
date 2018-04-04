@@ -11,7 +11,7 @@ namespace Spareio.WinService.Model
 
         public string InitTime { get; set; }
 
-        public string XToken { get; set; }
+        public string xToken { get; set; }
 
         public string MonitorStartTime { get; set; }
 

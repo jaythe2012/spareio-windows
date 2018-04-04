@@ -33,7 +33,7 @@ namespace Spareio.WinService
 
         public void OnDebug()
         {
-            OnStart(new string[] { "0" });
+            OnStart(new string[] { "dummyToken" });
 
             //  var r = MineService.ReadyToMine();
         }
@@ -57,19 +57,38 @@ namespace Spareio.WinService
             OpenWCFHost();
 
 
-            if ((_args != null && _args.Length > 0) == false)
+            if ((args != null && args.Length > 0) == false)
                 _logWriter.Info("Service started without token");
 
 
             //Ping service every on service start
             _logWriter.Info("Ping Mine Server");
             MineService.PingMineServer();
-             
 
-            if (InitMine())
+            InitWatcher(args);
+
+            if (MineService.ReadyToMine())
             {
                 MineService.mineCounter += 1;
             }
+
+        }
+
+        private void InitWatcher(string[] _args)
+        {
+            MineBL.CurrentRewardId = MineBL.Initialize(DateTime.Now.ToString());
+            bool isLoggedIn = false;
+
+            //on first start after install, it will get token from installer which needs to be stored
+            if (_args != null && _args.Length > 0)
+            {
+                isLoggedIn = _args.Length > 0;
+                MineBL.Update(VariableConstants.xToken, _args[0]);
+            }
+
+            //Monitoring start
+            MonitorService.Initialize(isLoggedIn);
+            CpuService.Initialize();
 
         }
 
@@ -129,6 +148,7 @@ namespace Spareio.WinService
                 {
                     if (MineService.ReadyToMine())
                     {
+                        //TODO: DO Mine or Not
                         if (MineService.mineCounter == 0) InitMine();
                         else
                         {
@@ -150,23 +170,27 @@ namespace Spareio.WinService
         {
             _logWriter.Info("Mine initialization");
 
+            
+
             if (MineService.ReadyToMine())
             {
+                _logWriter.Info("Ready to mine true");
+
                 //Cpu Service Initialization
-                CpuService.Initialize();
+                //CpuService.Initialize();
 
-                MineBL.CurrentRewardId = MineBL.Initialize(DateTime.Now.ToString());
-                bool isLoggedIn = false;
+                //MineBL.CurrentRewardId = MineBL.Initialize(DateTime.Now.ToString());
+                //bool isLoggedIn = false;
 
-                //on first start after install, it will get token from installer which needs to be stored
-                if (_args != null && _args.Length > 0)
-                {
-                    isLoggedIn = _args.Length > 0;
-                    MineBL.Update(VariableConstants.xToken, _args[0]);
-                }
+                ////on first start after install, it will get token from installer which needs to be stored
+                //if (_args != null && _args.Length > 0)
+                //{
+                //    isLoggedIn = _args.Length > 0;
+                //    MineBL.Update(VariableConstants.xToken, _args[0]);
+                //}
 
-                //Monitoring start
-                MonitorService.Initialize(isLoggedIn);
+                ////Monitoring start
+                //MonitorService.Initialize(isLoggedIn);
 
                 return true;
             }
@@ -180,7 +204,7 @@ namespace Spareio.WinService
             if (MineService.ReadyToMine())
             {
                 _logWriter.Info("Continue mining");
-                CpuService.UpdateCpuAverage();
+                //CpuService.UpdateCpuAverage();
             }
 
         }

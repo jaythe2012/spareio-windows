@@ -47,6 +47,7 @@ namespace Spareio.WinService.Helper
         }
         public static bool ReadyToMine()
         {
+            //TODO : CHeck MineConfig if mining is disabled from user
             bool result = true;
             var mineModel = FetchJSONFromMineConfig();
             try

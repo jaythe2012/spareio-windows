@@ -21,6 +21,7 @@ namespace Spareio.WinService
 
         private static void InitializeVariablesBulk(bool isLoggedIn)
         {
+            //TODO: Need to add xToken from registry
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
             dictionary.Add(VariableConstants.MonitorStartTime, DateTime.Now.ToString());
             dictionary.Add(VariableConstants.LastLoggedInTime, DateTime.Now.ToString());

@@ -25,7 +25,7 @@ namespace Spareio.WinService.Helper
             cpuCounter.CounterName = "% Processor Time";
             cpuCounter.InstanceName = "_Total";
 
-            //   RegisterForCpuTimer();
+            RegisterForCpuTimer();
 
             cpuDictionary = new Dictionary<string, string>();
             cpuDictionary.Add(VariableConstants.CpuTotal, "0.0");
@@ -51,23 +51,23 @@ namespace Spareio.WinService.Helper
         /// <summary>
         /// Cpu usgae monitor is managed by timer
         /// </summary>
-        //private static void RegisterForCpuTimer()
-        //{
-        //    try
-        //    {
+        private static void RegisterForCpuTimer()
+        {
+            try
+            {
 
 
 
-        //        cpuReadTimer = new System.Timers.Timer();
-        //        cpuReadTimer.Interval = 5000;
-        //        cpuReadTimer.Elapsed += CpuReadTimerOnElapsed;
-        //        cpuReadTimer.Enabled = true;
-        //        _logWriter.Info("Timer Enabled");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //    }
-        //}
+                cpuReadTimer = new System.Timers.Timer();
+                cpuReadTimer.Interval = 5000;
+                cpuReadTimer.Elapsed += CpuWriteTimerElapsed;
+                cpuReadTimer.Enabled = true;
+                _logWriter.Info("Timer Enabled");
+            }
+            catch (Exception ex)
+            {
+            }
+        }
 
         //private static void CpuReadTimerOnElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
         //{
@@ -78,10 +78,10 @@ namespace Spareio.WinService.Helper
         //    cpuCount = string.IsNullOrEmpty(cpuCount) ? cpuDictionary[VariableConstants.CpuCount] : cpuCount;
         //}
 
-        //private static void CpuWriteTimerElapsed(object sender, ElapsedEventArgs e)
-        //{
-        //    UpdateCpuAverage();
-        //}
+        private static void CpuWriteTimerElapsed(object sender, ElapsedEventArgs e)
+        {
+            UpdateCpuAverage();
+        }
 
         #endregion
 

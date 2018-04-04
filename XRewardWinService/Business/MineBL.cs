@@ -145,7 +145,7 @@ namespace Spareio.WinService.Business
                     existingModel.InitTime = value;
                     break;
                 case "xToken":
-                    existingModel.XToken = value;
+                    existingModel.xToken = value;
                     break;
                 case "MonitorStartTime":
                     existingModel.MonitorStartTime = value;
@@ -166,7 +166,7 @@ namespace Spareio.WinService.Business
                     existingModel.CpuCount = value;
                     break;
                 case "IsOnBattery":
-                    existingModel.XToken = value;
+                    existingModel.IsOnBattery = value;
                     break;
                 case "TotalBatteryTime":
                     existingModel.TotalBatteryTime = value;
