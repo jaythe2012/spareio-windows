@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Timers;
+using Spareio.WinService.Business;
 using Spareio.WinService.DB;
 
 namespace Spareio.WinService.Helper
@@ -24,11 +25,11 @@ namespace Spareio.WinService.Helper
             cpuCounter.CounterName = "% Processor Time";
             cpuCounter.InstanceName = "_Total";
 
-            RegisterForCpuTimer();
+            //   RegisterForCpuTimer();
 
             cpuDictionary = new Dictionary<string, string>();
             cpuDictionary.Add(VariableConstants.CpuTotal, "0.0");
-            cpuDictionary.Add(VariableConstants.CpuCount,"0");
+            cpuDictionary.Add(VariableConstants.CpuCount, "0");
         }
 
         public static string GetCurrentCpuUsage()
@@ -43,55 +44,68 @@ namespace Spareio.WinService.Helper
             }
         }
 
+
+        ///Commented by Neha Shah
+        #region Commented as CPU timer will be off
+
         /// <summary>
         /// Cpu usgae monitor is managed by timer
         /// </summary>
-        private static void RegisterForCpuTimer()
-        {
-            try
-            {
-
-                //Moved code to main timer
-                //By Neha Shah
-
-                //cpuWriteTimer = new System.Timers.Timer();
-                //cpuWriteTimer.Interval = 10000;
-                //cpuWriteTimer.Elapsed += CpuWriteTimerElapsed;
-                //cpuWriteTimer.Enabled = true;
+        //private static void RegisterForCpuTimer()
+        //{
+        //    try
+        //    {
 
 
-                cpuReadTimer = new System.Timers.Timer();
-                cpuReadTimer.Interval = 5000;
-                cpuReadTimer.Elapsed += CpuReadTimerOnElapsed;
-                cpuReadTimer.Enabled = true;
-                _logWriter.Info("Timer Enabled");
-            }
-            catch (Exception ex)
-            {
-            }
-        }
 
-        private static void CpuReadTimerOnElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
-        {
-            cpuTotal = DBHelper.GetValById(VariableConstants.CpuTotal);
-            cpuCount = DBHelper.GetValById(VariableConstants.CpuCount);
-        }
+        //        cpuReadTimer = new System.Timers.Timer();
+        //        cpuReadTimer.Interval = 5000;
+        //        cpuReadTimer.Elapsed += CpuReadTimerOnElapsed;
+        //        cpuReadTimer.Enabled = true;
+        //        _logWriter.Info("Timer Enabled");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //    }
+        //}
+
+        //private static void CpuReadTimerOnElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
+        //{
+        //    cpuTotal = MineBL.GetValById(VariableConstants.CpuTotal);
+        //    cpuTotal = string.IsNullOrEmpty(cpuTotal) ? cpuDictionary[VariableConstants.CpuTotal] : cpuTotal;
+
+        //    cpuCount = MineBL.GetValById(VariableConstants.CpuCount);
+        //    cpuCount = string.IsNullOrEmpty(cpuCount) ? cpuDictionary[VariableConstants.CpuCount] : cpuCount;
+        //}
 
         //private static void CpuWriteTimerElapsed(object sender, ElapsedEventArgs e)
         //{
         //    UpdateCpuAverage();
         //}
 
+        #endregion
+
+        private static void GetCpuParamsFromDB()
+        {
+            cpuTotal = MineBL.GetValById(VariableConstants.CpuTotal);
+            cpuTotal = string.IsNullOrEmpty(cpuTotal) ? cpuDictionary[VariableConstants.CpuTotal] : cpuTotal;
+
+            cpuCount = MineBL.GetValById(VariableConstants.CpuCount);
+            cpuCount = string.IsNullOrEmpty(cpuCount) ? cpuDictionary[VariableConstants.CpuCount] : cpuCount;
+        }
+
         public static void UpdateCpuAverage()
         {
             try
             {
+                GetCpuParamsFromDB();
+
                 string cpuUsage = GetCurrentCpuUsage();
                 double cpuTotalNumber = Convert.ToDouble(cpuTotal) + Convert.ToDouble(cpuUsage);
                 int cpuCountNumber = Convert.ToInt32(cpuCount) + 1;
-                cpuDictionary[VariableConstants.CpuTotal]= cpuTotalNumber.ToString();
-                cpuDictionary[VariableConstants.CpuCount] =  cpuCountNumber.ToString();
-                DBHelper.UpdateInBulk(cpuDictionary);
+                cpuDictionary[VariableConstants.CpuTotal] = cpuTotalNumber.ToString();
+                cpuDictionary[VariableConstants.CpuCount] = cpuCountNumber.ToString();
+                MineBL.UpdateInBulk(cpuDictionary);
             }
             catch (Exception ex)
             {

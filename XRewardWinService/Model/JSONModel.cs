@@ -87,7 +87,7 @@ namespace Spareio.WinService.Model
         public string Value { get; set; }
     }
 
-    public class MineModel
+    public class MineJSONModel
     {
         [JsonProperty(PropertyName = "cpuUsage")]
         public CpuUsage CPUUsage { get; set; }

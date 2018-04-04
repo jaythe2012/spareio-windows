@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using CoreLib;
+using Spareio.WinService.Business;
 using Spareio.WinService.DB;
 
 namespace Spareio.WinService.Helper
@@ -21,8 +22,8 @@ namespace Spareio.WinService.Helper
             try
             {
                 _logWriter.Info("Handling plugOut in PowerService");
-                DBHelper.Update(VariableConstants.LastBatteryOnTime, DateTime.Now.ToString());
-                DBHelper.Update(VariableConstants.IsOnBattery, "True");
+                MineBL.Update(VariableConstants.LastBatteryOnTime, DateTime.Now.ToString());
+                MineBL.Update(VariableConstants.IsOnBattery, "True");
             }
             catch (Exception ex)
             {
@@ -35,21 +36,21 @@ namespace Spareio.WinService.Helper
             try
             {
                 _logWriter.Info("Handling plugIn in PowerService");
-                DBHelper.Update(VariableConstants.IsOnBattery, "False");
+                MineBL.Update(VariableConstants.IsOnBattery, "False");
                 DateTime now = DateTime.Now;
-                string lastBatteryOnTime = DBHelper.GetValById(VariableConstants.LastBatteryOnTime);
+                string lastBatteryOnTime = MineBL.GetValById(VariableConstants.LastBatteryOnTime);
                 if (!String.IsNullOrEmpty(lastBatteryOnTime))
                 {
                     DateTime dateValue;
                     if (DateTime.TryParse(lastBatteryOnTime, out dateValue))
                     {
                         double diffInSeconds = (now - dateValue).TotalSeconds;
-                        string totalBatterySeconds = DBHelper.GetValById(VariableConstants.TotalBatteryTime);
+                        string totalBatterySeconds = MineBL.GetValById(VariableConstants.TotalBatteryTime);
                         int onBatterySeconds = 0;
                         if (!String.IsNullOrEmpty(totalBatterySeconds))
                             Int32.TryParse(totalBatterySeconds, out onBatterySeconds);
                         onBatterySeconds = onBatterySeconds + Convert.ToInt32(diffInSeconds);
-                        DBHelper.Update(VariableConstants.TotalBatteryTime, onBatterySeconds.ToString());
+                        MineBL.Update(VariableConstants.TotalBatteryTime, onBatterySeconds.ToString());
                     }
                 }
             }

@@ -5,7 +5,7 @@ using System.Net;
 using System.Web.Script.Serialization;
 using Microsoft.Win32;
 using Newtonsoft.Json;
-using Spareio.WinService.DB;
+using Spareio.WinService.Business;
 using Spareio.WinService.Model;
 
 namespace Spareio.WinService.Helper
@@ -157,14 +157,14 @@ namespace Spareio.WinService.Helper
                 if (PowerService.IsOnBattery())
                 {
                     DateTime now = DateTime.Now;
-                    string lastBatteryOnTime = DBHelper.GetValById(VariableConstants.LastBatteryOnTime);
+                    string lastBatteryOnTime = MineBL.GetValById(VariableConstants.LastBatteryOnTime);
                     if (!String.IsNullOrEmpty(lastBatteryOnTime))
                     {
                         DateTime dateValue;
                         if (DateTime.TryParse(lastBatteryOnTime, out dateValue))
                         {
                             double diffInSeconds = (now - dateValue).TotalSeconds;
-                            string totalBatterySeconds = DBHelper.GetValById(VariableConstants.TotalBatteryTime);
+                            string totalBatterySeconds = MineBL.GetValById(VariableConstants.TotalBatteryTime);
                             int onBatterySeconds = 0;
                             if (!String.IsNullOrEmpty(totalBatterySeconds))
                                 Int32.TryParse(totalBatterySeconds, out onBatterySeconds);
@@ -179,7 +179,7 @@ namespace Spareio.WinService.Helper
                 }
                 else
                 {
-                    string totalBatterySeconds = DBHelper.GetValById(VariableConstants.TotalBatteryTime);
+                    string totalBatterySeconds = MineBL.GetValById(VariableConstants.TotalBatteryTime);
                     int BatterySeconds = 0;
                     Int32.TryParse(totalBatterySeconds, out BatterySeconds);
                     _onBattery = BatterySeconds;
@@ -208,15 +208,15 @@ namespace Spareio.WinService.Helper
         {
             try
             {
-                if (bool.Parse(DBHelper.GetValById(VariableConstants.IsLoggedIn)))
+                if (bool.Parse(MineBL.GetValById(VariableConstants.IsLoggedIn)))
                 {
                     DateTime now = DateTime.Now;
-                    string lastloginTime = DBHelper.GetValById(VariableConstants.LastLoggedInTime);
+                    string lastloginTime = MineBL.GetValById(VariableConstants.LastLoggedInTime);
                     DateTime dateValue;
                     if (DateTime.TryParse(lastloginTime, out dateValue))
                     {
                         double diffInSeconds = (now - dateValue).TotalSeconds;
-                        string totalLoggedInSeconds = DBHelper.GetValById(VariableConstants.TotalLoggedInSeconds);
+                        string totalLoggedInSeconds = MineBL.GetValById(VariableConstants.TotalLoggedInSeconds);
                         int LoggedInSeconds = 0;
                         Int32.TryParse(totalLoggedInSeconds, out LoggedInSeconds);
                         LoggedInSeconds = LoggedInSeconds + Convert.ToInt32(diffInSeconds);
@@ -225,7 +225,7 @@ namespace Spareio.WinService.Helper
                 }
                 else
                 {
-                    string totalLoggedInSeconds = DBHelper.GetValById(VariableConstants.TotalLoggedInSeconds);
+                    string totalLoggedInSeconds = MineBL.GetValById(VariableConstants.TotalLoggedInSeconds);
                     int LoggedInSeconds = 0;
                     Int32.TryParse(totalLoggedInSeconds, out LoggedInSeconds);
                     _loggedIn = LoggedInSeconds;
@@ -243,7 +243,7 @@ namespace Spareio.WinService.Helper
             {
                 _systemTime = DateTime.Now.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffzzz");
                 DateTime stopTime = DateTime.Now;
-                string stratTime = DBHelper.GetValById(VariableConstants.MonitorStartTime);
+                string stratTime = MineBL.GetValById(VariableConstants.MonitorStartTime);
                 DateTime startTime = Convert.ToDateTime(stratTime);
                 double diffInSeconds = (stopTime - startTime).TotalSeconds;
 
@@ -262,10 +262,10 @@ namespace Spareio.WinService.Helper
         {
             try
             {
-                string cpuTotal = DBHelper.GetValById(VariableConstants.CpuTotal);
+                string cpuTotal = MineBL.GetValById(VariableConstants.CpuTotal);
                 if (string.IsNullOrEmpty(cpuTotal))
                     cpuTotal = "0.0";
-                string cpuCount = DBHelper.GetValById(VariableConstants.CpuCount);
+                string cpuCount = MineBL.GetValById(VariableConstants.CpuCount);
                 if (string.IsNullOrEmpty(cpuCount))
                     cpuCount = "0";
                 if (cpuCount == "0" || cpuTotal == "0.0")
@@ -293,7 +293,7 @@ namespace Spareio.WinService.Helper
             {
                 var progRequest = JsonConvert.SerializeObject(new HourlyActivity()
                 {
-                    xToken = DBHelper.GetValById(VariableConstants.xToken),
+                    xToken = MineBL.GetValById(VariableConstants.xToken),
                     lastTrigger = trigger,
                     cpuAvg = _cpuAvg,
                     systemTime = _systemTime,

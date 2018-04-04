@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Spareio.WinService.Helper;
 using System.ServiceModel;
 using Spareio.WinService.DB;
+using Spareio.WinService.Business;
 
 namespace Spareio.WinService
 {
@@ -44,7 +45,7 @@ namespace Spareio.WinService
             EnableTimer();
 
             //Refactor: Change XML to LiteDB : Location - C:\ProgramData\Spareio\Config
-            //DBHelper.CurrentRewardId = DBHelper.Initialize(DateTime.Now.ToString());
+            //MineBL.CurrentRewardId = MineBL.Initialize(DateTime.Now.ToString());
 
             //Refactor : Change logging to log4Net
             _logWriter.Info("Spareio winservice started");
@@ -63,11 +64,7 @@ namespace Spareio.WinService
             //Ping service every on service start
             _logWriter.Info("Ping Mine Server");
             MineService.PingMineServer();
-
-            //Cpu Service Initialization
-            CpuService.Initialize();
-
-
+             
 
             if (InitMine())
             {
@@ -155,14 +152,17 @@ namespace Spareio.WinService
 
             if (MineService.ReadyToMine())
             {
-                DBHelper.CurrentRewardId = DBHelper.Initialize(DateTime.Now.ToString());
+                //Cpu Service Initialization
+                CpuService.Initialize();
+
+                MineBL.CurrentRewardId = MineBL.Initialize(DateTime.Now.ToString());
                 bool isLoggedIn = false;
 
                 //on first start after install, it will get token from installer which needs to be stored
                 if (_args != null && _args.Length > 0)
                 {
                     isLoggedIn = _args.Length > 0;
-                    DBHelper.Update(VariableConstants.xToken, _args[0]);
+                    MineBL.Update(VariableConstants.xToken, _args[0]);
                 }
 
                 //Monitoring start
@@ -202,10 +202,10 @@ namespace Spareio.WinService
             else
             {
                 _logWriter.Info("Reset mine variables after every hour");
-                Boolean.TryParse(DBHelper.GetValById(VariableConstants.IsLoggedIn), out isLoggedIn);
+                Boolean.TryParse(MineBL.GetValById(VariableConstants.IsLoggedIn), out isLoggedIn);
                 MonitorService.Initialize(isLoggedIn);
 
-                DBHelper.CurrentRewardId = 0;
+                MineBL.CurrentRewardId = 0;
                 _startTimeOfService = DateTime.Now;
 
                 //Ping service every an hour
@@ -217,7 +217,7 @@ namespace Spareio.WinService
         protected override void OnStop()
         {
             _logWriter.Info("Time to send hourly event with proper trigger");
-            DBHelper.Update(VariableConstants.ServiceStopTime, DateTime.Now.ToString());
+            MineBL.Update(VariableConstants.ServiceStopTime, DateTime.Now.ToString());
 
             SendTelemetry("Close");
 
@@ -228,7 +228,7 @@ namespace Spareio.WinService
         protected override void OnShutdown()
         {
             _logWriter.Info("Shutting down");
-            DBHelper.Update(VariableConstants.ServiceStopTime, DateTime.Now.ToString()); //Added for Shutdown
+            MineBL.Update(VariableConstants.ServiceStopTime, DateTime.Now.ToString()); //Added for Shutdown
             SendTelemetry("ShutDown");
 
 

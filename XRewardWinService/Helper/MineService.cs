@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Spareio.WinService.Business;
 using Spareio.WinService.Model;
 using System;
 using System.Collections.Generic;
@@ -39,73 +40,87 @@ namespace Spareio.WinService.Helper
             }
         }
 
-        private static MineModel FetchJSONFromMineConfig()
+        private static MineJSONModel FetchJSONFromMineConfig()
         {
             var jsonResponse = File.ReadAllText(mineConfigFilePath + @"\mineConfiguration.json");
-            return JsonConvert.DeserializeObject<MineModel>(jsonResponse);
+            return JsonConvert.DeserializeObject<MineJSONModel>(jsonResponse);
         }
         public static bool ReadyToMine()
         {
             bool result = true;
             var mineModel = FetchJSONFromMineConfig();
-
-            if (mineModel.BatteryCharge != null)
+            try
             {
-                var batteryCharge = mineModel.BatteryCharge;
-                result = ValidateComparision((System.Windows.Forms.SystemInformation.PowerStatus.BatteryLifePercent * 100).ToString(), batteryCharge.Comparision, batteryCharge.Value);
-                if (result == false) return result;
-            }
-            if (mineModel.CPUUsage != null)
-            {
-                var cpuUsage = mineModel.CPUUsage;
-                result = ValidateComparision(CpuService.GetCurrentCpuUsage(), cpuUsage.Comparision, cpuUsage.Value);
-                if (result == false) return result;
-            }
-            if (mineModel.FreeMemory != null)
-            {
-                var freeMemory = mineModel.FreeMemory;
-                result = ValidateComparision(MemoryService.GetAvailableMemory(), freeMemory.Comparision, freeMemory.Value);
-                if (result == false) return result;
-            }
-            //if (mineModel.FullScreenApp != null)
-            //{
-            //Under R&D
-            //}
-            //if (mineModel.LastActivity != null)
-            //{
-            //    //Under R&D
-            //}
 
-            if (mineModel.OnActiveDirectory != null)
-            {
-                var onActiveDirectory = mineModel.OnActiveDirectory;
-                result = ValidateComparision(ActiveDirectoryService.IsInDomain().ToString(), onActiveDirectory.Comparision, onActiveDirectory.Value);
-                if (result == false) return result;
+
+                if (mineModel.BatteryCharge != null)
+                {
+                    var batteryCharge = mineModel.BatteryCharge;
+                    result = ValidateComparision((System.Windows.Forms.SystemInformation.PowerStatus.BatteryLifePercent * 100).ToString(), batteryCharge.Comparision, batteryCharge.Value);
+                    if (result == false) return result;
+                }
+                if (mineModel.CPUUsage != null)
+                {
+                    var cpuUsage = mineModel.CPUUsage;
+                    result = ValidateComparision(CpuService.GetCurrentCpuUsage(), cpuUsage.Comparision, cpuUsage.Value);
+                    if (result == false) return result;
+                }
+                if (mineModel.FreeMemory != null)
+                {
+                    var freeMemory = mineModel.FreeMemory;
+                    result = ValidateComparision(MemoryService.GetAvailableMemory(), freeMemory.Comparision, freeMemory.Value);
+                    if (result == false) return result;
+                }
+                //if (mineModel.FullScreenApp != null)
+                //{
+                //Under R&D
+                //}
+                //if (mineModel.LastActivity != null)
+                //{
+                //    //Under R&D
+                //}
+
+                if (mineModel.OnActiveDirectory != null)
+                {
+                    var onActiveDirectory = mineModel.OnActiveDirectory;
+                    result = ValidateComparision(ActiveDirectoryService.IsInDomain().ToString(), onActiveDirectory.Comparision, onActiveDirectory.Value);
+                    if (result == false) return result;
+                }
+
+                if (mineModel.OnBattery != null)
+                {
+                    var onBattery = mineModel.OnBattery;
+                    result = ValidateComparision(PowerService.IsOnBattery().ToString(), onBattery.Comparision, onBattery.Value);
+                    if (result == false) return result;
+                }
+
+                if (mineModel.OnMeteredConnection != null)
+                {
+                    var meteredConnection = mineModel.OnMeteredConnection;
+                    result = ValidateComparision(ConnectionService.IsMeteredConnection().ToString(), meteredConnection.Comparision, meteredConnection.Value);
+                    if (result == false) return result;
+                }
+
+                if (mineModel.TimeWorkedToday != null)
+                {
+                    var timeWorkedToday = mineModel.TimeWorkedToday;
+                    timeToWorkPerDay = double.Parse(timeWorkedToday.Value);
+
+                    result = ValidateComparision(mineCounter.ToString(), timeWorkedToday.Comparision, timeWorkedToday.Value);
+                    if (result == false) return result;
+                }
+
+                var mineConfiguration = MineConfigBL.Get();
+                if (mineConfiguration != null)
+                    result = (mineConfiguration.IsAppOn && mineConfiguration.IsMiningOn);
+                else
+                    result = true;
             }
 
-            if (mineModel.OnBattery != null)
+            catch (Exception ex)
             {
-                var onBattery = mineModel.OnBattery;
-                result = ValidateComparision(PowerService.IsOnBattery().ToString(), onBattery.Comparision, onBattery.Value);
-                if (result == false) return result;
+                result = false;
             }
-
-            if (mineModel.OnMeteredConnection != null)
-            {
-                var meteredConnection = mineModel.OnMeteredConnection;
-                result = ValidateComparision(ConnectionService.IsMeteredConnection().ToString(), meteredConnection.Comparision, meteredConnection.Value);
-                if (result == false) return result;
-            }
-
-            if (mineModel.TimeWorkedToday != null)
-            {
-                var timeWorkedToday = mineModel.TimeWorkedToday;
-                timeToWorkPerDay = double.Parse(timeWorkedToday.Value);
-
-                result = ValidateComparision(mineCounter.ToString(), timeWorkedToday.Comparision, timeWorkedToday.Value);
-                if (result == false) return result;
-            }
-
             return result;
         }
 

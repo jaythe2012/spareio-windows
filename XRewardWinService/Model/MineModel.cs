@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Spareio.WinService.Model
 {
-    public class XRewardModel
+    public class MineModel
     {
         public int Id { get; set; }
 

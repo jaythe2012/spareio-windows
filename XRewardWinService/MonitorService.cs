@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Spareio.WinService.Business;
 using Spareio.WinService.DB;
 using Spareio.WinService.Helper;
 
@@ -34,10 +35,10 @@ namespace Spareio.WinService
             else
                 dictionary.Add(VariableConstants.LastBatteryOnTime, "0");
 
-            if (DBHelper.CurrentRewardId == 0)
-                DBHelper.InitializeInBulk(dictionary);
+            if (MineBL.CurrentRewardId == 0)
+                MineBL.InitializeInBulk(dictionary);
             else
-                DBHelper.UpdateInBulk(dictionary);
+                MineBL.UpdateInBulk(dictionary);
 
         }
 

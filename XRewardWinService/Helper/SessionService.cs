@@ -1,4 +1,5 @@
 ﻿using System;
+using Spareio.WinService.Business;
 using Spareio.WinService.DB;
 
 namespace Spareio.WinService.Helper
@@ -8,25 +9,25 @@ namespace Spareio.WinService.Helper
         public static void HandleLogOff()
         {
             DateTime now = DateTime.Now;
-            string lastloginTime = DBHelper.GetValById(VariableConstants.LastLoggedInTime);
+            string lastloginTime = MineBL.GetValById(VariableConstants.LastLoggedInTime);
             DateTime dateValue;
             if (DateTime.TryParse(lastloginTime, out dateValue))
             {
                 double diffInSeconds = (now - dateValue).TotalSeconds;
-                string totalLoggedInSeconds = DBHelper.GetValById(VariableConstants.TotalLoggedInSeconds);
+                string totalLoggedInSeconds = MineBL.GetValById(VariableConstants.TotalLoggedInSeconds);
                 int LoggedInSeconds = 0;
                 Int32.TryParse(totalLoggedInSeconds, out LoggedInSeconds);
                 LoggedInSeconds = LoggedInSeconds + Convert.ToInt32(diffInSeconds);
-                DBHelper.Update(VariableConstants.TotalLoggedInSeconds,LoggedInSeconds.ToString());
-                DBHelper.Update(VariableConstants.IsLoggedIn, "False");
+                MineBL.Update(VariableConstants.TotalLoggedInSeconds,LoggedInSeconds.ToString());
+                MineBL.Update(VariableConstants.IsLoggedIn, "False");
             }
 
         }
 
         internal static void HandleLogIn()
         {
-            DBHelper.Update(VariableConstants.LastLoggedInTime, DateTime.Now.ToString());
-            DBHelper.Update(VariableConstants.IsLoggedIn, "True");
+            MineBL.Update(VariableConstants.LastLoggedInTime, DateTime.Now.ToString());
+            MineBL.Update(VariableConstants.IsLoggedIn, "True");
         }
     }
 }
