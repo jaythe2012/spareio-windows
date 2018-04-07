@@ -40,3 +40,6 @@ E:\BlobStation\Jay\Projects\spareio-windows\XRewardApp\obj\Debug\Spareio.UI.cspr
 E:\BlobStation\Jay\Projects\spareio-windows\XRewardApp\obj\Debug\Spareio.UI.csproj.CopyComplete
 E:\BlobStation\Jay\Projects\spareio-windows\XRewardApp\obj\Debug\Spareio.exe
 E:\BlobStation\Jay\Projects\spareio-windows\XRewardApp\obj\Debug\Spareio.pdb
+E:\BlobStation\Jay\Projects\spareio-windows\XRewardApp\obj\Debug\Monitoring.g.cs
+E:\BlobStation\Jay\Projects\spareio-windows\XRewardApp\obj\Debug\Spareio_MarkupCompile.lref
+E:\BlobStation\Jay\Projects\spareio-windows\XRewardApp\obj\Debug\Monitoring.baml

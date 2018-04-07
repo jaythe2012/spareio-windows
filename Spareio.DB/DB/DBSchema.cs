@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace Spareio.WinService.DB
+namespace Spareio.Data.DB
 {
     public class DBSchema
     {

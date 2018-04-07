@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Spareio.WinService.Business;
-using Spareio.WinService.DB;
+using Spareio.Business;
 using Spareio.WinService.Helper;
 
 namespace Spareio.WinService
@@ -14,8 +13,6 @@ namespace Spareio.WinService
         {
 
             InitializeVariablesBulk(isLoggedIn);
-           // CpuService.Initialize();
-
             //TODO: Initialize miner engine which returns true/false to determine miner should be running or not
         }
 

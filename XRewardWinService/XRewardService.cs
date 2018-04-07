@@ -6,8 +6,7 @@ using System.Timers;
 using System.Windows.Forms;
 using Spareio.WinService.Helper;
 using System.ServiceModel;
-using Spareio.WinService.DB;
-using Spareio.WinService.Business;
+using Spareio.Business;
 
 namespace Spareio.WinService
 {
@@ -18,10 +17,7 @@ namespace Spareio.WinService
 
         static string[] _args;
         static DateTime _startTimeOfService;
-
-
         ServiceHost myHost;
-
 
         public XRewardService()
         {
@@ -34,13 +30,13 @@ namespace Spareio.WinService
         public void OnDebug()
         {
             OnStart(new string[] { "dummyToken" });
-
             //  var r = MineService.ReadyToMine();
         }
 
+
+
         protected override void OnStart(string[] args)
         {
-
             //Refactor: Add debug condition for testing purpose
             EnableTimer();
 
@@ -59,25 +55,27 @@ namespace Spareio.WinService
 
             if ((args != null && args.Length > 0) == false)
                 _logWriter.Info("Service started without token");
+            else
+                _args = args;
 
+            //Initialization of variables and functions
+            InitWatcher();
 
-            //Ping service every on service start
-            _logWriter.Info("Ping Mine Server");
-            MineService.PingMineServer();
-
-            InitWatcher(args);
-
-            if (MineService.ReadyToMine())
-            {
-                MineService.mineCounter += 1;
-            }
+            if (MineService.ReadyToMine()) MineService.MineCounter += 1;
 
         }
 
-        private void InitWatcher(string[] _args)
+
+        private void InitWatcher()
         {
-            MineBL.CurrentRewardId = MineBL.Initialize(DateTime.Now.ToString());
+            _logWriter.Info("Ping Mine Server");
+            MineService.PingMineServer();
+
+            MineService.MineCounter = 0;
+            MineBL.CurrentRewardId = 0;
             bool isLoggedIn = false;
+
+            MineBL.CurrentRewardId = MineBL.Initialize(DateTime.Now.ToString());
 
             //on first start after install, it will get token from installer which needs to be stored
             if (_args != null && _args.Length > 0)
@@ -89,7 +87,6 @@ namespace Spareio.WinService
             //Monitoring start
             MonitorService.Initialize(isLoggedIn);
             CpuService.Initialize();
-
         }
 
 
@@ -137,31 +134,33 @@ namespace Spareio.WinService
             if (diff.Days == 1) // Next Day
             {
                 //In any condition mine counter will be zero.
-                MineService.mineCounter = 0;
-
-                _logWriter.Info("Day elapsed.. time to send event");
-                ResetMine();
+                _logWriter.Info("Day elapsed.. time to re-init service");
+                InitWatcher();
             }
             else
             {
-                if (minutes >= 1 && minutes <= 60)
+                if (IsMineCompletedForTheDay() == false)
                 {
-                    if (MineService.ReadyToMine())
+
+                    if (minutes >= 1 && minutes <= 60)
                     {
-                        //TODO: DO Mine or Not
-                        if (MineService.mineCounter == 0) InitMine();
-                        else
+                        if (MineService.ReadyToMine())
                         {
-                            Mine();
-                            MineService.mineCounter += 1;
+                            //TODO: DO Mine or Not
+                            if (MineService.MineCounter == 0) InitMine();
+                            else
+                            {
+                                Mine();
+                                MineService.MineCounter += 1;
+                            }
                         }
                     }
-                }
 
-                if (minutes == 60)
-                {
-                    _logWriter.Info("Hour elapsed.. time to send event");
-                    ResetMine();
+                    if (minutes == 60)
+                    {
+                        _logWriter.Info("Hour elapsed.. time to send event");
+                        ResetMine();
+                    }
                 }
             }
         }
@@ -170,28 +169,9 @@ namespace Spareio.WinService
         {
             _logWriter.Info("Mine initialization");
 
-            
-
             if (MineService.ReadyToMine())
             {
                 _logWriter.Info("Ready to mine true");
-
-                //Cpu Service Initialization
-                //CpuService.Initialize();
-
-                //MineBL.CurrentRewardId = MineBL.Initialize(DateTime.Now.ToString());
-                //bool isLoggedIn = false;
-
-                ////on first start after install, it will get token from installer which needs to be stored
-                //if (_args != null && _args.Length > 0)
-                //{
-                //    isLoggedIn = _args.Length > 0;
-                //    MineBL.Update(VariableConstants.xToken, _args[0]);
-                //}
-
-                ////Monitoring start
-                //MonitorService.Initialize(isLoggedIn);
-
                 return true;
             }
             else
@@ -209,31 +189,34 @@ namespace Spareio.WinService
 
         }
 
+
+        private bool IsMineCompletedForTheDay()
+        {
+            var timeToWorkPerDay = (MineService.timeToWorkPerDay != 0 ? MineService.timeToWorkPerDay : (60 * 60)) / 60;
+            return (MineService.MineCounter >= timeToWorkPerDay);
+
+        }
         private void ResetMine()
         {
-            bool isLoggedIn = true;
-
-            var timeToWorkPerDay = (MineService.timeToWorkPerDay != 0 ? MineService.timeToWorkPerDay : (60 * 60)) / 60;
-
+            //bool isLoggedIn = true;
+            _startTimeOfService = DateTime.Now;
 
             SendTelemetry("Interval");
 
-            if (MineService.mineCounter >= timeToWorkPerDay)
+            if (IsMineCompletedForTheDay())
             {
                 _logWriter.Info("Reset mine counter after configured mining have been done");
-                MineService.mineCounter = 0;
             }
             else
             {
-                _logWriter.Info("Reset mine variables after every hour");
-                Boolean.TryParse(MineBL.GetValById(VariableConstants.IsLoggedIn), out isLoggedIn);
-                MonitorService.Initialize(isLoggedIn);
-
-                MineBL.CurrentRewardId = 0;
-                _startTimeOfService = DateTime.Now;
+                _logWriter.Info("Ping mine server after every hour");
 
                 //Ping service every an hour
                 MineService.PingMineServer();
+
+                //We will not reset anything for total 60 mining counter
+                // Boolean.TryParse(MineBL.GetValById(VariableConstants.IsLoggedIn), out isLoggedIn);
+                // MonitorService.Initialize(isLoggedIn);
             }
         }
 
@@ -315,7 +298,9 @@ namespace Spareio.WinService
             else if (powerStatus.HasFlag(PowerBroadcastStatus.ResumeAutomatic))
             {
                 _logWriter.Info("Resume suspended coming back from sleep automatic");
-                MonitorService.Initialize();
+
+                //Query
+                //MonitorService.Initialize();
             }
 
             else if (powerStatus.HasFlag(PowerBroadcastStatus.QuerySuspend))

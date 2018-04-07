@@ -68,6 +68,9 @@
     <Compile Include="InactiveTimeRetriever.cs" />
     <Compile Include="Model\MinerInfo.cs" />
     <Compile Include="Model\VersionInfo.cs" />
+    <Compile Include="Monitoring.xaml.cs">
+      <DependentUpon>Monitoring.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\SpareioClient\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -96,6 +99,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Monitoring.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -136,6 +143,14 @@
       <Project>{dabd2b91-d392-4a09-bbc4-5cce99a7c9a0}</Project>
       <Name>CoreLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Spareio.Business\Spareio.Business.csproj">
+      <Project>{96662db4-0343-492e-8d46-971b7a8b7eff}</Project>
+      <Name>Spareio.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Spareio.Model\Spareio.Model.csproj">
+      <Project>{1e2b316c-e8dd-453f-af07-113d26ac3969}</Project>
+      <Name>Spareio.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -157,6 +172,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Account.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

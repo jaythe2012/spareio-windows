@@ -22,3 +22,5 @@ E:\BlobStation\Jay\Projects\spareio-windows\XRewardWinService\obj\Debug\Spareio.
 E:\BlobStation\Jay\Projects\spareio-windows\XRewardWinService\obj\Debug\Spareio.WinService.csproj.CopyComplete
 E:\BlobStation\Jay\Projects\spareio-windows\XRewardWinService\obj\Debug\SpareioWinService.exe
 E:\BlobStation\Jay\Projects\spareio-windows\XRewardWinService\obj\Debug\SpareioWinService.pdb
+E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\App.config
+E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\log4net.config

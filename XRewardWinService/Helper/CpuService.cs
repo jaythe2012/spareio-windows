@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Timers;
-using Spareio.WinService.Business;
-using Spareio.WinService.DB;
+using Spareio.Business;
 
 namespace Spareio.WinService.Helper
 {
@@ -55,9 +54,6 @@ namespace Spareio.WinService.Helper
         {
             try
             {
-
-
-
                 cpuReadTimer = new System.Timers.Timer();
                 cpuReadTimer.Interval = 5000;
                 cpuReadTimer.Elapsed += CpuWriteTimerElapsed;

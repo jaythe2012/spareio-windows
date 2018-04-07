@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using CoreLib;
-using Spareio.WinService.Business;
-using Spareio.WinService.DB;
+using Spareio.Business;
+
 
 namespace Spareio.WinService.Helper
 {

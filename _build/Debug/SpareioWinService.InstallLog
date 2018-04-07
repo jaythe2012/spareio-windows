@@ -1,0 +1,227 @@
+﻿Installing assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+Installing service SpareioWinService...
+Creating EventLog source SpareioWinService in log Application...
+Rolling back assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+Restoring event log to previous state for source SpareioWinService.
+Installing assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+Installing service SpareioWinService...
+Creating EventLog source SpareioWinService in log Application...
+Rolling back assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+Restoring event log to previous state for source SpareioWinService.
+Uninstalling assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+Removing EventLog source SpareioWinService.
+An exception occurred during the uninstallation of the System.Diagnostics.EventLogInstaller installer.
+System.Security.SecurityException: Requested registry access is not allowed.
+An exception occurred while uninstalling. This exception will be ignored and the uninstall will continue. However, the application might not be fully uninstalled after the uninstall is complete.
+Installing assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+Installing service SpareioWinService...
+Creating EventLog source SpareioWinService in log Application...
+Rolling back assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+Restoring event log to previous state for source SpareioWinService.
+Installing assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+Installing service SpareioWinService...
+Creating EventLog source SpareioWinService in log Application...
+Rolling back assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+Restoring event log to previous state for source SpareioWinService.
+Installing assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\debug\SpareioWinService.InstallLog
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\debug\SpareioWinService.exe
+Installing service SpareioWinService...
+Creating EventLog source SpareioWinService in log Application...
+Rolling back assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\debug\SpareioWinService.InstallLog
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\debug\SpareioWinService.exe
+Restoring event log to previous state for source SpareioWinService.
+Uninstalling assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\debug\SpareioWinService.InstallLog
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\debug\SpareioWinService.exe
+Removing EventLog source SpareioWinService.
+Service SpareioWinService is being removed from the system...
+Service SpareioWinService was successfully removed from the system.
+Uninstalling assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\debug\SpareioWinService.InstallLog
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\debug\SpareioWinService.exe
+Removing EventLog source SpareioWinService.
+Warning: The source SpareioWinService is not registered on the local machine.
+Service SpareioWinService is being removed from the system...
+An exception occurred during the uninstallation of the System.ServiceProcess.ServiceInstaller installer.
+System.ComponentModel.Win32Exception: The specified service does not exist as an installed service
+An exception occurred while uninstalling. This exception will be ignored and the uninstall will continue. However, the application might not be fully uninstalled after the uninstall is complete.
+Installing assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\debug\SpareioWinService.InstallLog
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\debug\SpareioWinService.exe
+Installing service SpareioWinService...
+Service SpareioWinService has been successfully installed.
+Creating EventLog source SpareioWinService in log Application...
+Committing assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\debug\SpareioWinService.InstallLog
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\debug\SpareioWinService.exe
+Installing assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+Installing service SpareioWinService...
+Creating EventLog source SpareioWinService in log Application...
+Rolling back assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+Restoring event log to previous state for source SpareioWinService.
+Uninstalling assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+Removing EventLog source SpareioWinService.
+Service SpareioWinService is being removed from the system...
+Service SpareioWinService was successfully removed from the system.
+Installing assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+Installing service SpareioWinService...
+Service SpareioWinService has been successfully installed.
+Creating EventLog source SpareioWinService in log Application...
+Committing assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+Uninstalling assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+Removing EventLog source SpareioWinService.
+Service SpareioWinService is being removed from the system...
+Service SpareioWinService was successfully removed from the system.
+Installing assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+Installing service SpareioWinService...
+Service SpareioWinService has been successfully installed.
+Creating EventLog source SpareioWinService in log Application...
+Committing assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+Uninstalling assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+Removing EventLog source SpareioWinService.
+Service SpareioWinService is being removed from the system...
+Service SpareioWinService was successfully removed from the system.
+Attempt to stop service SpareioWinService.
+Installing assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+Installing service SpareioWinService...
+Service SpareioWinService has been successfully installed.
+Creating EventLog source SpareioWinService in log Application...
+Committing assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+Uninstalling assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+Removing EventLog source SpareioWinService.
+Service SpareioWinService is being removed from the system...
+Service SpareioWinService was successfully removed from the system.
+Attempt to stop service SpareioWinService.
+Uninstalling assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+Removing EventLog source SpareioWinService.
+Warning: The source SpareioWinService is not registered on the local machine.
+Service SpareioWinService is being removed from the system...
+An exception occurred during the uninstallation of the System.ServiceProcess.ServiceInstaller installer.
+System.ComponentModel.Win32Exception: The specified service does not exist as an installed service
+An exception occurred while uninstalling. This exception will be ignored and the uninstall will continue. However, the application might not be fully uninstalled after the uninstall is complete.
+Uninstalling assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+Removing EventLog source SpareioWinService.
+Warning: The source SpareioWinService is not registered on the local machine.
+Service SpareioWinService is being removed from the system...
+An exception occurred during the uninstallation of the System.ServiceProcess.ServiceInstaller installer.
+System.ComponentModel.Win32Exception: The specified service does not exist as an installed service
+An exception occurred while uninstalling. This exception will be ignored and the uninstall will continue. However, the application might not be fully uninstalled after the uninstall is complete.
+Installing assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog
+Installing service SpareioWinService...
+Service SpareioWinService has been successfully installed.
+Creating EventLog source SpareioWinService in log Application...
+Committing assembly 'E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.exe
+   logfile = E:\BlobStation\Jay\Projects\spareio-windows\_build\Debug\SpareioWinService.InstallLog

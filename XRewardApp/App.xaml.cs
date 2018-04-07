@@ -269,8 +269,8 @@ namespace Spareio.UI
 
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
-            MainWindow win = new MainWindow();
-            win.Hide();
+            Monitoring win = new Monitoring();
+            win.Show();
         }
     }
 

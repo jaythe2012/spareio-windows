@@ -5,7 +5,7 @@ using System.Net;
 using System.Web.Script.Serialization;
 using Microsoft.Win32;
 using Newtonsoft.Json;
-using Spareio.WinService.Business;
+using Spareio.Business;
 using Spareio.WinService.Model;
 
 namespace Spareio.WinService.Helper
@@ -299,7 +299,7 @@ namespace Spareio.WinService.Helper
                     systemTime = _systemTime,
                     batteryStatus = PowerService.IsOnBattery(),
                     sampleSeconds = _sampleSeconds,
-                    miningSeconds = 0,
+                    miningSeconds = MineService.MineCounter,
                     inactivityCounterAvg = _inactivityCounterAvg,
                     countScreenSaver = _screenSaver,
                     countDisplayOff = _displayOff,

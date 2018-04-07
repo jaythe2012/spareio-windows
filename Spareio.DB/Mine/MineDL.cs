@@ -1,21 +1,19 @@
 ﻿using LiteDB;
-using Spareio.WinService.DB;
-using Spareio.WinService.Model;
+using Spareio.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Spareio.Data.DB;
 
-namespace Spareio.WinService.Business
+namespace Spareio.Business
 {
-    public class MineBL
+    public class MineDL
     {
-        public static int CurrentRewardId = 0;
         private static Object _thisLock = new Object();
-        private static readonly log4net.ILog _logWriter = log4net.LogManager.GetLogger(typeof(MineBL));
 
         #region Mine
 
-        public static int Initialize(string initTime)
+        public int Initialize(string initTime)
         {
             int result = 0;
             if (DBHelper.CreateDBDirectory() == false) return result;
@@ -35,7 +33,7 @@ namespace Spareio.WinService.Business
             }
         }
 
-        public static int InitializeInBulk(Dictionary<string, string> keyValDictionary)
+        public int InitializeInBulk(Dictionary<string, string> keyValDictionary)
         {
             var result = 0;
 
@@ -59,15 +57,11 @@ namespace Spareio.WinService.Business
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                _logWriter.Error("Error while inserting in bulk " + ex.Message + "For key " + keyValDictionary.ToString());
-            }
-
+            catch (Exception ex) { }
             return result;
         }
 
-        public static int Update(string key, string value)
+        public int Update(int id, string key, string value)
         {
             int result = 0;
             if (DBHelper.CreateDBDirectory() == false) return result;
@@ -76,7 +70,7 @@ namespace Spareio.WinService.Business
             using (var db = new LiteDatabase(DBSchema.DBPath + "\\" + DBSchema.DBName))
             {
                 //Get Existing Value
-                var existingMineModel = Get();
+                var existingMineModel = Get(id);
 
                 //Get Table
                 var xRewardDetails = db.GetCollection<MineModel>(DBSchema.MineTable);
@@ -88,11 +82,11 @@ namespace Spareio.WinService.Business
 
         }
 
-        public static void UpdateInBulk(Dictionary<string, string> keyValDictionary)
+        public bool UpdateInBulk(int id, Dictionary<string, string> keyValDictionary)
         {
             try
             {
-                var existingMineModel = Get();
+                var existingMineModel = Get(id);
                 var mineModel = new MineModel();
 
                 lock (_thisLock)
@@ -109,15 +103,18 @@ namespace Spareio.WinService.Business
                         var xRewardDetails = db.GetCollection<MineModel>(DBSchema.MineTable);
                         xRewardDetails.Update(mineModel);
                     }
+
+                    return true;
                 }
             }
             catch (Exception ex)
             {
-                _logWriter.Error("Error while updating in bulk " + ex.Message + "For key " + keyValDictionary.ToString());
             }
+
+            return false;
         }
 
-        public static MineModel Get()
+        public MineModel Get(int id)
         {
             try
             {
@@ -126,17 +123,16 @@ namespace Spareio.WinService.Business
                 using (var db = new LiteDatabase(DBSchema.DBPath + "\\" + DBSchema.DBName))
                 {
                     var xRewardDetails = db.GetCollection<MineModel>(DBSchema.MineTable);
-                    return xRewardDetails.Find(x => x.Id == CurrentRewardId).FirstOrDefault();
+                    return xRewardDetails.Find(x => x.Id == id).FirstOrDefault();
                 }
             }
             catch (Exception ex)
             {
-                _logWriter.Error("Error while reading table " + ex.Message);
                 return null;
             }
         }
 
-        private static MineModel BuildMineModel(string key, string value, MineModel existingModel)
+        private MineModel BuildMineModel(string key, string value, MineModel existingModel)
         {
 
             switch (key)
@@ -182,7 +178,7 @@ namespace Spareio.WinService.Business
             return existingModel;
         }
 
-        public static string GetValById(string key)
+        public string GetValById(int id, string key)
         {
             string result = String.Empty;
 
@@ -190,7 +186,7 @@ namespace Spareio.WinService.Business
             {
                 lock (_thisLock)
                 {
-                    var existingMineModel = Get();
+                    var existingMineModel = Get(id);
                     if (existingMineModel != null)
                     {
                         result = existingMineModel.GetType().GetProperty(key).GetValue(existingMineModel, null).ToString(); //existingMineModel.GetType().GetField(key);
@@ -200,7 +196,6 @@ namespace Spareio.WinService.Business
             }
             catch (Exception ex)
             {
-                _logWriter.Error("Error while reading " + ex.Message + "For key " + key);
                 return result;
             }
         }

@@ -1,0 +1,15 @@
+E:\BlobStation\Jay\Projects\spareio-windows\Spareio.Business\obj\Debug\Spareio.Business.csprojResolveAssemblyReference.cache
+E:\BlobStation\Jay\Projects\spareio-windows\Spareio.Business\obj\Debug\Spareio.Business.csproj.CoreCompileInputs.cache
+E:\BlobStation\Jay\Projects\spareio-windows\Spareio.Business\bin\Debug\Spareio.Business.dll
+E:\BlobStation\Jay\Projects\spareio-windows\Spareio.Business\bin\Debug\Spareio.Business.pdb
+E:\BlobStation\Jay\Projects\spareio-windows\Spareio.Business\bin\Debug\log4net.dll
+E:\BlobStation\Jay\Projects\spareio-windows\Spareio.Business\bin\Debug\Spareio.Data.dll
+E:\BlobStation\Jay\Projects\spareio-windows\Spareio.Business\bin\Debug\Spareio.Model.dll
+E:\BlobStation\Jay\Projects\spareio-windows\Spareio.Business\bin\Debug\LiteDB.dll
+E:\BlobStation\Jay\Projects\spareio-windows\Spareio.Business\bin\Debug\Spareio.Data.pdb
+E:\BlobStation\Jay\Projects\spareio-windows\Spareio.Business\bin\Debug\Spareio.Model.pdb
+E:\BlobStation\Jay\Projects\spareio-windows\Spareio.Business\bin\Debug\log4net.xml
+E:\BlobStation\Jay\Projects\spareio-windows\Spareio.Business\bin\Debug\LiteDB.xml
+E:\BlobStation\Jay\Projects\spareio-windows\Spareio.Business\obj\Debug\Spareio.Business.csproj.CopyComplete
+E:\BlobStation\Jay\Projects\spareio-windows\Spareio.Business\obj\Debug\Spareio.Business.dll
+E:\BlobStation\Jay\Projects\spareio-windows\Spareio.Business\obj\Debug\Spareio.Business.pdb

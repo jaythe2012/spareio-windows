@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spareio.UI", "XRewardApp\Spareio.UI.csproj", "{6AFBEBEC-A28E-488E-ACC8-EAB473593865}"
 EndProject
@@ -14,6 +14,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreLib", "CoreLib\CoreLib.csproj", "{DABD2B91-D392-4A09-BBC4-5CCE99A7C9A0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spareio.Uninstaller", "Spareio.Uninstaller\Spareio.Uninstaller.csproj", "{08096396-8FB3-435A-AA4B-43C867B69989}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spareio.Data", "Spareio.DB\Spareio.Data.csproj", "{E77AAEB0-D0B0-4107-9E05-41C2B9E8842B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spareio.Business", "Spareio.Business\Spareio.Business.csproj", "{96662DB4-0343-492E-8D46-971B7A8B7EFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spareio.Model", "Spareio.Model\Spareio.Model.csproj", "{1E2B316C-E8DD-453F-AF07-113D26AC3969}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,8 +51,23 @@ Global
 		{08096396-8FB3-435A-AA4B-43C867B69989}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08096396-8FB3-435A-AA4B-43C867B69989}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08096396-8FB3-435A-AA4B-43C867B69989}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E77AAEB0-D0B0-4107-9E05-41C2B9E8842B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E77AAEB0-D0B0-4107-9E05-41C2B9E8842B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E77AAEB0-D0B0-4107-9E05-41C2B9E8842B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E77AAEB0-D0B0-4107-9E05-41C2B9E8842B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96662DB4-0343-492E-8D46-971B7A8B7EFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96662DB4-0343-492E-8D46-971B7A8B7EFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96662DB4-0343-492E-8D46-971B7A8B7EFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96662DB4-0343-492E-8D46-971B7A8B7EFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E2B316C-E8DD-453F-AF07-113D26AC3969}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E2B316C-E8DD-453F-AF07-113D26AC3969}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E2B316C-E8DD-453F-AF07-113D26AC3969}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E2B316C-E8DD-453F-AF07-113D26AC3969}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DA2A2D0D-F309-4B62-97C3-89640A9B011C}
 	EndGlobalSection
 EndGlobal

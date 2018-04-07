@@ -1,13 +1,10 @@
 ﻿using Newtonsoft.Json;
-using Spareio.WinService.Business;
+using Spareio.Business;
 using Spareio.WinService.Model;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
 
 namespace Spareio.WinService.Helper
 {
@@ -15,7 +12,7 @@ namespace Spareio.WinService.Helper
     {
         static string mineConfigServiceUrl = ConfigurationManager.AppSettings["MineConfigServiceUrl"].ToString();
         static string mineConfigFilePath = ConfigurationManager.AppSettings["MineConfigFilePath"].ToString();
-        public static int mineCounter = 0;
+        public static int MineCounter = 0;
         public static double timeToWorkPerDay = 60000D;
 
         public static void PingMineServer()
@@ -81,12 +78,12 @@ namespace Spareio.WinService.Helper
                 //    //Under R&D
                 //}
 
-                if (mineModel.OnActiveDirectory != null)
-                {
-                    var onActiveDirectory = mineModel.OnActiveDirectory;
-                    result = ValidateComparision(ActiveDirectoryService.IsInDomain().ToString(), onActiveDirectory.Comparision, onActiveDirectory.Value);
-                    if (result == false) return result;
-                }
+                //if (mineModel.OnActiveDirectory != null)
+                //{
+                //    var onActiveDirectory = mineModel.OnActiveDirectory;
+                //    result = ValidateComparision(ActiveDirectoryService.IsInDomain().ToString(), onActiveDirectory.Comparision, onActiveDirectory.Value);
+                //    if (result == false) return result;
+                //}
 
                 if (mineModel.OnBattery != null)
                 {
@@ -107,7 +104,7 @@ namespace Spareio.WinService.Helper
                     var timeWorkedToday = mineModel.TimeWorkedToday;
                     timeToWorkPerDay = double.Parse(timeWorkedToday.Value);
 
-                    result = ValidateComparision(mineCounter.ToString(), timeWorkedToday.Comparision, timeWorkedToday.Value);
+                    result = ValidateComparision(MineCounter.ToString(), timeWorkedToday.Comparision, timeWorkedToday.Value);
                     if (result == false) return result;
                 }
 
@@ -115,7 +112,8 @@ namespace Spareio.WinService.Helper
                 if (mineConfiguration != null)
                     result = (mineConfiguration.IsAppOn && mineConfiguration.IsMiningOn);
                 else
-                    result = true;
+                    InitMineConfiguration();
+
             }
 
             catch (Exception ex)
@@ -124,7 +122,15 @@ namespace Spareio.WinService.Helper
             }
             return result;
         }
-
+        private static void InitMineConfiguration()
+        {
+            //Initialize Mine Configuration
+            MineConfigBL.Initialize(new Spareio.Model.MineConfigModel()
+            {
+                IsAppOn = true,
+                IsMiningOn = false
+            });
+        }
         private static bool ValidateComparision(string valueToCompare, string comparision, string value, string type = "Int")
         {
             bool result = false;

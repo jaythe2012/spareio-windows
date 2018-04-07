@@ -1,6 +1,6 @@
 ﻿using System;
-using Spareio.WinService.Business;
-using Spareio.WinService.DB;
+using Spareio.Business;
+
 
 namespace Spareio.WinService.Helper
 {
