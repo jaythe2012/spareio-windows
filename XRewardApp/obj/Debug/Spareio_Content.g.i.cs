@@ -8,16 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/images/account.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/images/checkbox_filled.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/images/checkbox_unfilled.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/images/close.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/images/help.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/images/icon_active.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/images/icon_inactive.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/images/logo.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/images/power_off.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/images/power_on.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/images/power_snooze.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/images/icon_active.ico")]
 
 

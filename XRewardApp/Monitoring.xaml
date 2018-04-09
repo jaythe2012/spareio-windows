@@ -4,8 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Spareio.UI"
-        mc:Ignorable="d"
-        Title="Monitoring" Height="425" Width="342" Topmost="True">
+        mc:Ignorable="d" Height="425" Width="342" ResizeMode="CanMinimize" Topmost="True" WindowStartupLocation="CenterScreen" StateChanged="Window_StateChanged" Icon="Assets/Images/Icon_active.ico">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -120,8 +119,8 @@
             Stroke="#FFE0E0E0" Margin="17,306,32,76" Grid.Column="1" Grid.ColumnSpan="2" StrokeThickness="0.2" Height="12" />
         <Image x:Name="imgChangeStatus" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Height="65" Margin="134,120,0,0" VerticalAlignment="Top" Width="69" Source="Assets/Images/Power_Off.png" Stretch="UniformToFill"/>
         <Label x:Name="lblChangeStatus" Content="Snooze" Grid.Column="1" HorizontalAlignment="Left" Margin="128,186,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20"/>
-        <Label x:Name="lblRegisterText" Content="Register for more rewards" Grid.Column="1" HorizontalAlignment="Left" Margin="49,7,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="180" Foreground="#FF3C9FD5" FontSize="14"/>
-        <Image Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="19,12,0,0" VerticalAlignment="Top" Width="20" Source="Assets/Images/Account.png"/>
+        <Label x:Name="lblRegisterText" Content="Register for more rewards" Grid.Column="1" HorizontalAlignment="Left" Margin="49,1,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="180" Foreground="#FF3C9FD5" FontSize="14"/>
+        <Image Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="19,6,0,0" VerticalAlignment="Top" Width="20" Source="Assets/Images/Account.png"/>
         <Image Grid.Column="2" HorizontalAlignment="Left" Height="15" Margin="53,254,0,0" VerticalAlignment="Top" Width="15" Source="Assets/Images/Help.png" RenderTransformOrigin="11.1,10.65"/>
         <Image Grid.Column="2" HorizontalAlignment="Left" Height="15" Margin="106,286,0,0" VerticalAlignment="Top" Width="15" Source="Assets/Images/Help.png" RenderTransformOrigin="11.1,10.65"/>
         <Button x:Name="btnTurnOn_Init" Content="Turn ON" HorizontalAlignment="Left" Margin="32,336,0,0" 
@@ -132,7 +131,20 @@
                 </Style>
             </Button.Resources>
         </Button>
+
+
     </Grid>
+
+    <Window.Resources>
+
+        <ContextMenu x:Key="NotifierContextMenu" Placement="MousePoint">
+
+            <MenuItem Header="Open" Click="Menu_Open"/>
+            <MenuItem Header="Quit" Click="Menu_Close"/>
+
+        </ContextMenu>
+
+    </Window.Resources>
 
 
 </Window>

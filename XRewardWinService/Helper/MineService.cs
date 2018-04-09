@@ -22,6 +22,8 @@ namespace Spareio.WinService.Helper
             {
                 if (stream != null)
                 {
+                    System.IO.Directory.CreateDirectory(mineConfigFilePath);
+
                     using (var file = File.OpenWrite(mineConfigFilePath + @"\mineConfiguration.json"))
                     {
                         var buffer = new byte[1024];
