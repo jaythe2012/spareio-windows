@@ -26,7 +26,8 @@ namespace Spareio.UI
     {
         private static List<string> commandLineArgs;
         private System.Timers.Timer _checkForSoftwareUpdateTimer = null;
-
+        private static bool minimizedOnStartup = false;
+        private static bool firstRun = false;
 
         public static List<string> CommandLineArgs
         {
@@ -74,11 +75,21 @@ namespace Spareio.UI
                     RunOnStartUp(true);
                     System.Windows.Application.Current.Shutdown();
                 }
+
                 if (CommandLineArgs.Contains("--afterinstall"))
                 {
+                    firstRun = true;
                     string url = BuildLaunchUrl();
                     Process.Start(url);
                 }
+
+
+                //Added for staying minimized
+                if (CommandLineArgs.Contains(AppConstant.MinimizeCmd))
+                {
+                    minimizedOnStartup = true;
+                }
+
                 LogWriter.Info("Time to start App");
                 App app = new App();
                 app.InitializeComponent();
@@ -178,7 +189,7 @@ namespace Spareio.UI
                     {
                         registryKey.SetValue(appName, String.Join(" ", new[]
                         {
-                            Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Spareio.exe"
+                            Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Spareio.exe --minimize"
                         }));
                     }
                     else
@@ -261,7 +272,6 @@ namespace Spareio.UI
                 Process.Start(nanoInstallerPath, nanoArgs.ToString());
                 //Call to Webservice
 
-
             }
 
         }
@@ -269,7 +279,7 @@ namespace Spareio.UI
 
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
-            Monitoring win = new Monitoring();
+            Monitoring win = new Monitoring(minimizedOnStartup, firstRun);
             win.Show();
         }
     }

@@ -25,12 +25,14 @@ namespace Spareio.UI
     {
         private System.Timers.Timer mTimer;
 
-        public Monitoring()
+        public Monitoring(bool minimizedOnStartup, bool firstRun)
         {
             InitializeComponent();
             InitializeNotificationTrayIcon();
-            InitMining();
+            InitMining(firstRun);
 
+            if (minimizedOnStartup)
+                Hide();
         }
 
         #region Events
@@ -208,7 +210,7 @@ namespace Spareio.UI
             notifyIcon.Visible = true;
         }
 
-        private void InitMining()
+        private void InitMining(bool firstRun)
         {
             try
             {
@@ -220,15 +222,10 @@ namespace Spareio.UI
                 var mineConfig = GetMineConfig();
 
 
-                //if (FirstTimeApp)
-                //{
-                //    btnTurnOn_Init.Visibility = Visibility.Visible;
-                //}
-
-                if (mineConfig == null) //If no entry in DB, just need to insert values App = On, Mine = false, Turn ON Button will be initialize
+                if (firstRun || mineConfig == null)
                 {
                     InitMineConfig();
-                    btnTurnOn.Visibility = Visibility.Visible;
+                    btnTurnOn_Init.Visibility = Visibility.Visible;
                 }
 
                 if (mineConfig.Item1 == false) // Is App Off
