@@ -176,6 +176,19 @@
   <ItemGroup>
     <Resource Include="Account.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\Account.png" />
+    <Resource Include="Assets\Images\Checkbox_filled.png" />
+    <Resource Include="Assets\Images\Checkbox_unfilled.png" />
+    <Resource Include="Assets\Images\Close.png" />
+    <Resource Include="Assets\Images\Help.png" />
+    <Resource Include="Assets\Images\Icon_active.png" />
+    <Resource Include="Assets\Images\Icon_inactive.png" />
+    <Resource Include="Assets\Images\Logo.png" />
+    <Resource Include="Assets\Images\Power_Off.png" />
+    <Resource Include="Assets\Images\Power_On.png" />
+    <Resource Include="Assets\Images\Power_Snooze.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -78,12 +78,12 @@ namespace Spareio.WinService.Helper
                 //    //Under R&D
                 //}
 
-                //if (mineModel.OnActiveDirectory != null)
-                //{
-                //    var onActiveDirectory = mineModel.OnActiveDirectory;
-                //    result = ValidateComparision(ActiveDirectoryService.IsInDomain().ToString(), onActiveDirectory.Comparision, onActiveDirectory.Value);
-                //    if (result == false) return result;
-                //}
+                if (mineModel.OnActiveDirectory != null)
+                {
+                    var onActiveDirectory = mineModel.OnActiveDirectory;
+                    result = ValidateComparision(ActiveDirectoryService.IsInDomain().ToString(), onActiveDirectory.Comparision, onActiveDirectory.Value);
+                    if (result == false) return result;
+                }
 
                 if (mineModel.OnBattery != null)
                 {

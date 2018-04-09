@@ -17,12 +17,12 @@
                 HorizontalAlignment="Left" 
                 Margin="31,336,0,0" 
                 VerticalAlignment="Top" Width="125"
-                Click="btnQuit_Click" Height="40" 
+                Click="btnQuit_Click" Height="40"  IsCancel="True"
                 Grid.Column="1" Background="White" BorderBrush="#FF505863" Foreground="#FF5C636E">
 
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="7"/>
+                    <Setter Property="CornerRadius" Value="20"/>
                 </Style>
             </Button.Resources>
         </Button>
@@ -43,7 +43,7 @@
         <Button x:Name="btnTurnOn" Content="Turn ON" HorizontalAlignment="Left" Margin="14,336,0,0" VerticalAlignment="Top" Width="125" Click="btnTurnOn_Click" Height="40" Grid.Column="2" Foreground="White" Background="#FF3C9FD5" BorderBrush="#FF1F82B8">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="7"/>
+                    <Setter Property="CornerRadius" Value="20"/>
                 </Style>
             </Button.Resources>
         </Button>
@@ -94,10 +94,10 @@
                 </ControlTemplate>
             </ToggleButton.Template>
         </ToggleButton>
-        <Button x:Name="btnSnooze" Content="Snooze" HorizontalAlignment="Left" Margin="14,336,0,0" VerticalAlignment="Top" Width="125" Height="40" Grid.Column="2" Foreground="#FF5C636E" Background="White" Click="btnSnooze_Click">
+        <Button x:Name="btnSnooze" Content="Snooze" HorizontalAlignment="Left" Margin="14,335,0,0" VerticalAlignment="Top" Width="125" Height="40" Grid.Column="2" Foreground="#FF5C636E" Background="White" Click="btnSnooze_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="7"/>
+                    <Setter Property="CornerRadius" Value="20"/>
                 </Style>
             </Button.Resources>
         </Button>
@@ -124,6 +124,14 @@
         <Image Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="19,12,0,0" VerticalAlignment="Top" Width="20" Source="Assets/Images/Account.png"/>
         <Image Grid.Column="2" HorizontalAlignment="Left" Height="15" Margin="53,254,0,0" VerticalAlignment="Top" Width="15" Source="Assets/Images/Help.png" RenderTransformOrigin="11.1,10.65"/>
         <Image Grid.Column="2" HorizontalAlignment="Left" Height="15" Margin="106,286,0,0" VerticalAlignment="Top" Width="15" Source="Assets/Images/Help.png" RenderTransformOrigin="11.1,10.65"/>
+        <Button x:Name="btnTurnOn_Init" Content="Turn ON" HorizontalAlignment="Left" Margin="32,336,0,0" 
+                VerticalAlignment="Top" Width="275" Height="40" Grid.Column="1" Foreground="White" Background="#FF3C9FD5" BorderBrush="#FF1F82B8" Grid.ColumnSpan="2" Click="btnTurnOn_Init_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 
 

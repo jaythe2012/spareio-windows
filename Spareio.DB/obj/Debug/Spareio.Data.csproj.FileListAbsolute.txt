@@ -1,11 +1,11 @@
-E:\BlobStation\Jay\Projects\spareio-windows\Spareio.DB\obj\Debug\Spareio.Data.csprojResolveAssemblyReference.cache
-E:\BlobStation\Jay\Projects\spareio-windows\Spareio.DB\obj\Debug\Spareio.Data.csproj.CoreCompileInputs.cache
 E:\BlobStation\Jay\Projects\spareio-windows\Spareio.DB\bin\Debug\Spareio.Data.dll
 E:\BlobStation\Jay\Projects\spareio-windows\Spareio.DB\bin\Debug\Spareio.Data.pdb
 E:\BlobStation\Jay\Projects\spareio-windows\Spareio.DB\bin\Debug\LiteDB.dll
 E:\BlobStation\Jay\Projects\spareio-windows\Spareio.DB\bin\Debug\Spareio.Model.dll
 E:\BlobStation\Jay\Projects\spareio-windows\Spareio.DB\bin\Debug\Spareio.Model.pdb
 E:\BlobStation\Jay\Projects\spareio-windows\Spareio.DB\bin\Debug\LiteDB.xml
+E:\BlobStation\Jay\Projects\spareio-windows\Spareio.DB\obj\Debug\Spareio.Data.csprojResolveAssemblyReference.cache
+E:\BlobStation\Jay\Projects\spareio-windows\Spareio.DB\obj\Debug\Spareio.Data.csproj.CoreCompileInputs.cache
 E:\BlobStation\Jay\Projects\spareio-windows\Spareio.DB\obj\Debug\Spareio.Data.csproj.CopyComplete
 E:\BlobStation\Jay\Projects\spareio-windows\Spareio.DB\obj\Debug\Spareio.Data.dll
 E:\BlobStation\Jay\Projects\spareio-windows\Spareio.DB\obj\Debug\Spareio.Data.pdb

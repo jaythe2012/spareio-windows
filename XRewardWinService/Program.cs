@@ -10,19 +10,19 @@ namespace Spareio.WinService
         static void Main()
         {
 
-#if (DEBUG)
+//#if (DEBUG)
 
-            XRewardService xRewardService = new XRewardService();
-            xRewardService.OnDebug();
+//            XRewardService xRewardService = new XRewardService();
+//            xRewardService.OnDebug();
 
-#else
+//#else
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[]
             {
                 new XRewardService()
             };
             ServiceBase.Run(ServicesToRun);
-#endif
+//#endif
         }
 
       

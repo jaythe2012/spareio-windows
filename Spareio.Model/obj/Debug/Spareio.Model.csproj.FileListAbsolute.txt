@@ -3,4 +3,3 @@ E:\BlobStation\Jay\Projects\spareio-windows\Spareio.Model\bin\Debug\Spareio.Mode
 E:\BlobStation\Jay\Projects\spareio-windows\Spareio.Model\obj\Debug\Spareio.Model.csproj.CoreCompileInputs.cache
 E:\BlobStation\Jay\Projects\spareio-windows\Spareio.Model\obj\Debug\Spareio.Model.dll
 E:\BlobStation\Jay\Projects\spareio-windows\Spareio.Model\obj\Debug\Spareio.Model.pdb
-E:\BlobStation\Jay\Projects\spareio-windows\Spareio.Model\obj\Debug\Spareio.Model.csprojResolveAssemblyReference.cache

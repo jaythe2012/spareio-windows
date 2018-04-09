@@ -27,6 +27,41 @@ namespace Spareio.UI
         public Monitoring()
         {
             InitializeComponent();
+            lblChangeStatus.Content = "OFF";
+
+            btnTurnOn_Init.Visibility = Visibility.Hidden;
+            btnTurnOn.Visibility = Visibility.Hidden;
+            btnSnooze.Visibility = Visibility.Hidden;
+
+
+            var mineConfig = GetMineConfig();
+
+
+            //if (FirstTimeApp)
+            //{
+            //    btnTurnOn_Init.Visibility = Visibility.Visible;
+            //}
+
+            if (mineConfig == null) //If no entry in DB, just need to insert values App = On, Mine = false, Turn ON Button will be initialize
+            {
+                InitMineConfig();
+                btnTurnOn.Visibility = Visibility.Visible;
+            }
+
+            if (mineConfig.Item1 == false) // Is App Off
+            {
+                UpdateMineConfig(true, null);
+            }
+
+            if (mineConfig.Item2 == true) // Is Mining On
+            {
+                btnSnooze.Visibility = Visibility.Visible;
+            }
+            else if (mineConfig.Item2 == false) // Is Mining Off
+            {
+                btnTurnOn.Visibility = Visibility.Visible;
+            }
+
         }
 
         private void btnQuit_Click(object sender, RoutedEventArgs e)
@@ -45,6 +80,9 @@ namespace Spareio.UI
             {
                 LogWriter.Error("Error on stopping miner " + ex.Message);
             }
+
+            this.Close();
+
         }
 
         private void mTimer_Tick(object sender, EventArgs e)
@@ -59,8 +97,13 @@ namespace Spareio.UI
         {
             try
             {
-                btnTurnOn.Visibility = Visibility.Hidden;
+                lblChangeStatus.Content = "ON";
+                imgChangeStatus.Source = new BitmapImage(new Uri("~/Assets/Images/Power_On.png"));
+
                 btnSnooze.Visibility = Visibility.Visible;
+                btnTurnOn_Init.Visibility = Visibility.Hidden;
+                btnTurnOn.Visibility = Visibility.Hidden;
+
                 UpdateMineConfig(true, true);
             }
             catch (Exception ex)
@@ -70,9 +113,28 @@ namespace Spareio.UI
 
 
         }
+
+        private void InitMineConfig()
+        {
+            MineConfigBL.Initialize(new Spareio.Model.MineConfigModel {
+                IsAppOn = true,
+                IsMiningOn = false
+            });
+        }
         private void UpdateMineConfig(bool? isAppOn, bool? isMiningOn)
         {
             MineConfigBL.Update(isAppOn, isMiningOn);
+        }
+
+        private Tuple<bool, bool> GetMineConfig()
+        {
+            var mineConfig = MineConfigBL.Get();
+
+            if (mineConfig != null)
+                // returnVal.Add(mineConfig.IsAppOn, mineConfig.IsMiningOn);
+                return new Tuple<bool, bool>(mineConfig.IsAppOn, mineConfig.IsMiningOn);
+            else
+                return null;
         }
 
         private void EnableTimer()
@@ -90,8 +152,13 @@ namespace Spareio.UI
         {
             try
             {
-                btnTurnOn.Visibility = Visibility.Hidden;
-                btnSnooze.Visibility = Visibility.Visible;
+                lblChangeStatus.Content = "SNOOZED";
+                imgChangeStatus.Source = new BitmapImage(new Uri("~/Assets/Images/Power_Snooze.png"));
+
+                btnTurnOn.Visibility = Visibility.Visible;
+                btnTurnOn_Init.Visibility = Visibility.Hidden;
+                btnSnooze.Visibility = Visibility.Hidden;
+
                 UpdateMineConfig(true, false);
                 EnableTimer();
             }
@@ -99,6 +166,10 @@ namespace Spareio.UI
             {
 
             }
+        }
+        private void btnTurnOn_Init_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateMineConfig(true, true);
         }
     }
 }
